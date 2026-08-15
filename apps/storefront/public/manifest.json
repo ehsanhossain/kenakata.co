@@ -1,0 +1,9 @@
+{
+  "name": "Kenakata.co",
+  "short_name": "Kenakata",
+  "description": "Bangladesh's Trusted Online Store",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#1976D2",
+  "background_color": "#FFFFFF"
+}

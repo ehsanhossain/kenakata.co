@@ -87,7 +87,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const requestOtp = async (phone: string): Promise<{ success: boolean; message?: string; debugCode?: string }> => {
     try {
-      const res = await fetch(`${API_BASE}/auth/customer/otp/request`, {
+      const res = await fetch(`${API_BASE}/auth/otp/request`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone }),
@@ -109,7 +109,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const verifyOtp = async (phone: string, code: string): Promise<{ success: boolean; message?: string }> => {
     try {
-      const res = await fetch(`${API_BASE}/auth/customer/otp/verify`, {
+      const res = await fetch(`${API_BASE}/auth/otp/verify`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone, code }),

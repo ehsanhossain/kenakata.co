@@ -5,7 +5,10 @@ WORKDIR /app
 
 COPY package.json pnpm-workspace.yaml pnpm-lock.yaml turbo.json ./
 COPY apps/storefront/package.json apps/storefront/
-RUN pnpm install --frozen-lockfile --filter @kenakata/storefront...
+COPY apps/admin/package.json apps/admin/
+COPY apps/api/package.json apps/api/
+COPY database database/
+RUN pnpm install --no-frozen-lockfile
 
 # ── Stage 2: Build ──
 FROM node:24-alpine AS builder
@@ -14,10 +17,13 @@ WORKDIR /app
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/apps/storefront/node_modules ./apps/storefront/node_modules
+COPY --from=deps /app/apps/admin/node_modules ./apps/admin/node_modules
+COPY --from=deps /app/apps/api/node_modules ./apps/api/node_modules
 COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
+RUN pnpm prisma generate --schema=database/schema.prisma
 RUN pnpm --filter @kenakata/storefront build
 
 # ── Stage 3: Production Runner ──

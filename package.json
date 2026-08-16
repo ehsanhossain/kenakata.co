@@ -21,9 +21,16 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "infra:up": "docker compose -f ops/docker-compose.local.yml up -d",
-    "infra:down": "docker compose -f ops/docker-compose.local.yml down"
+    "infra:down": "docker compose -f ops/docker-compose.local.yml down",
+    "db:generate": "prisma generate --schema=database/schema.prisma",
+    "db:push": "prisma db push --schema=database/schema.prisma",
+    "db:migrate": "prisma migrate dev --schema=database/schema.prisma",
+    "db:seed": "pnpm --filter @kenakata/api seed",
+    "db:studio": "prisma studio --schema=database/schema.prisma"
   },
   "devDependencies": {
+    "@prisma/client": "^6.4.1",
+    "prisma": "^6.4.1",
     "prettier": "^3.6.2",
     "turbo": "^2.5.6",
     "typescript": "^5.9.2"

@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
-import { PrismaService } from '@/common/prisma.service';
+import { PrismaService } from '../../common/prisma.service';
 import { AddCartItemDto, UpdateCartItemDto } from './dto/cart.dto';
-import { poishaToTaka, SHIPPING_RATES } from '@/common/constants';
+import { poishaToTaka, SHIPPING_RATES } from '../../common/constants';
 import * as crypto from 'crypto';
 
 @Injectable()

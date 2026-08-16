@@ -1,8 +1,8 @@
 import { Controller, Get } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
-import { PrismaService } from '@/common/prisma.service';
-import { RedisService } from '@/common/redis.service';
-import { MeiliSearchService } from '@/common/meilisearch.service';
+import { PrismaService } from '../../common/prisma.service';
+import { RedisService } from '../../common/redis.service';
+import { MeiliSearchService } from '../../common/meilisearch.service';
 
 @ApiTags('Health')
 @Controller('health')

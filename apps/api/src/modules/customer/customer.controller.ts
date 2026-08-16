@@ -2,8 +2,8 @@ import { Controller, Get, Put, Post, Delete, Body, Param, UseGuards } from '@nes
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
 import { CustomerService } from './customer.service';
 import { UpdateProfileDto, CreateAddressDto, UpdateAddressDto } from './dto/customer.dto';
-import { JwtAuthGuard } from '@/common/guards/jwt-auth.guard';
-import { CurrentUser } from '@/common/decorators/current-user.decorator';
+import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
+import { CurrentUser } from '../../common/decorators/current-user.decorator';
 
 @ApiTags('Customer')
 @Controller('customer')

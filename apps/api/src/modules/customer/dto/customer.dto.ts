@@ -1,6 +1,6 @@
 import { IsString, IsNotEmpty, IsOptional, IsEmail, IsBoolean, IsIn } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { BANGLADESH_DIVISIONS } from '@/common/constants';
+import { BANGLADESH_DIVISIONS } from '../../../common/constants';
 
 export class UpdateProfileDto {
   @ApiProperty({ required: false, example: 'Tanvir Hossain' })

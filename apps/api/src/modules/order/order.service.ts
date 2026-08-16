@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException, BadRequestException, ForbiddenException } from '@nestjs/common';
-import { PrismaService } from '@/common/prisma.service';
+import { PrismaService } from '../../common/prisma.service';
 import { TrackOrderDto, UpdateOrderStatusDto, OrderFilterDto } from './dto/order.dto';
-import { poishaToTaka } from '@/common/constants';
+import { poishaToTaka } from '../../common/constants';
 
 @Injectable()
 export class OrderService {

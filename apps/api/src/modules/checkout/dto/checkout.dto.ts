@@ -1,7 +1,7 @@
 import { IsString, IsNotEmpty, IsOptional, IsEnum, IsArray, ValidateNested, IsInt, Min } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';
-import { BANGLADESH_DIVISIONS } from '@/common/constants';
+import { BANGLADESH_DIVISIONS } from '../../../common/constants';
 
 export class CheckoutItemDto {
   @ApiProperty({ example: 'variant-uuid' })

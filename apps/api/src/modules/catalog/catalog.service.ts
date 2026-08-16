@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException, BadRequestException, Logger } from '@nestjs/common';
-import { PrismaService } from '@/common/prisma.service';
-import { MeiliSearchService } from '@/common/meilisearch.service';
+import { PrismaService } from '../../common/prisma.service';
+import { MeiliSearchService } from '../../common/meilisearch.service';
 import { ProductFilterDto, CreateCategoryDto, CreateBrandDto, CreateProductDto } from './dto/catalog.dto';
-import { poishaToTaka, takaToPoisha } from '@/common/constants';
+import { poishaToTaka, takaToPoisha } from '../../common/constants';
 
 @Injectable()
 export class CatalogService {

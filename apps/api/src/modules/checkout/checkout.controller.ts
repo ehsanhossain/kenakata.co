@@ -2,8 +2,8 @@ import { Controller, Post, Body, Headers, UseGuards } from '@nestjs/common';
 import { ApiTags, ApiOperation } from '@nestjs/swagger';
 import { CheckoutService } from './checkout.service';
 import { CheckoutQuoteDto, PlaceOrderDto } from './dto/checkout.dto';
-import { OptionalJwtAuthGuard } from '@/common/guards/jwt-auth.guard';
-import { CurrentUser } from '@/common/decorators/current-user.decorator';
+import { OptionalJwtAuthGuard } from '../../common/guards/jwt-auth.guard';
+import { CurrentUser } from '../../common/decorators/current-user.decorator';
 
 @ApiTags('Checkout')
 @Controller('checkout')

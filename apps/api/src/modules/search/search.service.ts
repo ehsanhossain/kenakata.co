@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '@/common/prisma.service';
-import { MeiliSearchService } from '@/common/meilisearch.service';
+import { PrismaService } from '../../common/prisma.service';
+import { MeiliSearchService } from '../../common/meilisearch.service';
 import { CatalogService } from '../catalog/catalog.service';
 
 @Injectable()

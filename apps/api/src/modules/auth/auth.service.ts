@@ -1,8 +1,8 @@
 import { Injectable, BadRequestException, UnauthorizedException, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
-import { PrismaService } from '@/common/prisma.service';
-import { RedisService } from '@/common/redis.service';
+import { PrismaService } from '../../common/prisma.service';
+import { RedisService } from '../../common/redis.service';
 import { RequestOtpDto, VerifyOtpDto, AdminLoginDto, RefreshTokenDto } from './dto/auth.dto';
 import { JwtPayload } from './jwt.strategy';
 

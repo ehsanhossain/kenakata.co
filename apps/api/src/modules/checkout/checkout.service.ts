@@ -1,8 +1,8 @@
 import { Injectable, BadRequestException, NotFoundException, Logger } from '@nestjs/common';
-import { PrismaService } from '@/common/prisma.service';
-import { PromotionService } from '@/modules/promotion/promotion.service';
+import { PrismaService } from '../../common/prisma.service';
+import { PromotionService } from '../promotion/promotion.service';
 import { CheckoutQuoteDto, PlaceOrderDto } from './dto/checkout.dto';
-import { poishaToTaka, SHIPPING_RATES } from '@/common/constants';
+import { poishaToTaka, SHIPPING_RATES } from '../../common/constants';
 import * as crypto from 'crypto';
 
 @Injectable()

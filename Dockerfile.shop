@@ -1,0 +1,51 @@
+# ── Stage 1: Dependencies ──
+FROM node:24-alpine AS deps
+RUN corepack enable && corepack prepare pnpm@10.6.2 --activate
+WORKDIR /app
+
+COPY package.json pnpm-workspace.yaml pnpm-lock.yaml turbo.json ./
+COPY apps/storefront/package.json apps/storefront/
+COPY apps/admin/package.json apps/admin/
+COPY apps/shop/package.json apps/shop/
+COPY apps/api/package.json apps/api/
+COPY database database/
+RUN pnpm install --no-frozen-lockfile
+
+# ── Stage 2: Build ──
+FROM node:24-alpine AS builder
+RUN corepack enable && corepack prepare pnpm@10.6.2 --activate
+WORKDIR /app
+
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app/apps/storefront/node_modules ./apps/storefront/node_modules
+COPY --from=deps /app/apps/admin/node_modules ./apps/admin/node_modules
+COPY --from=deps /app/apps/shop/node_modules ./apps/shop/node_modules
+COPY --from=deps /app/apps/api/node_modules ./apps/api/node_modules
+COPY . .
+
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
+RUN pnpm prisma generate --schema=database/schema.prisma
+RUN pnpm --filter @kenakata/shop build
+
+# ── Stage 3: Production Runner ──
+FROM node:24-alpine AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV PORT=9002
+ENV HOSTNAME="0.0.0.0"
+
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/apps/shop/public ./apps/shop/public
+COPY --from=builder --chown=nextjs:nodejs /app/apps/shop/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/apps/shop/.next/static ./apps/shop/.next/static
+
+USER nextjs
+
+EXPOSE 9002
+
+CMD ["node", "apps/shop/server.js"]

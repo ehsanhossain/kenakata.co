@@ -1,222 +1,160 @@
 'use client';
 
-import { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { useAdminAuth } from '../context/AdminAuthContext';
+import { AdminShell } from '../components/AdminShell';
 import {
-  LayoutDashboard, ShoppingBag, Package, Users, Settings, BarChart3,
-  Warehouse, ChevronLeft, Menu, Bell, Search, User, LogOut,
-  TrendingUp, TrendingDown, ShoppingCart, DollarSign, Clock
+  DollarSign, ShoppingCart, Clock, Users, Store, CheckSquare,
+  TrendingUp, ArrowRight, ShieldCheck, AlertCircle, Package
 } from 'lucide-react';
 
-const navItems = [
-  { icon: LayoutDashboard, label: 'Dashboard', href: '/', active: true },
-  { icon: ShoppingBag, label: 'Products', href: '/products' },
-  { icon: Package, label: 'Orders', href: '/orders' },
-  { icon: Warehouse, label: 'Inventory', href: '/inventory' },
-  { icon: Users, label: 'Customers', href: '/customers' },
-  { icon: BarChart3, label: 'Analytics', href: '/analytics' },
-  { icon: Settings, label: 'Settings', href: '/settings' },
-];
+export default function AdminDashboardPage() {
+  const kpiCards = [
+    { title: 'Total Platform Revenue', value: '৳12,45,800', change: '+14.2%', icon: DollarSign, color: 'text-emerald-400 bg-emerald-500/10' },
+    { title: 'Orders Today', value: '47', change: '+8.5%', icon: ShoppingCart, color: 'text-blue-400 bg-blue-500/10' },
+    { title: 'Pending KYC Reviews', value: '1 Store', change: 'Ctg Lifestyle', icon: Store, color: 'text-amber-400 bg-amber-500/10', alert: true },
+    { title: 'Registered Customers', value: '2,847', change: '+5.7%', icon: Users, color: 'text-purple-400 bg-purple-500/10' },
+  ];
 
-const kpiCards = [
-  { title: 'Total Revenue', value: '৳12,45,800', change: '+12.5%', trend: 'up', icon: DollarSign, color: 'bg-brand-blue/10 text-brand-blue' },
-  { title: 'Orders Today', value: '47', change: '+8.2%', trend: 'up', icon: ShoppingCart, color: 'bg-green-50 text-green-600' },
-  { title: 'Pending Orders', value: '12', change: '-3.1%', trend: 'down', icon: Clock, color: 'bg-amber-50 text-amber-600' },
-  { title: 'Active Customers', value: '2,847', change: '+5.7%', trend: 'up', icon: Users, color: 'bg-purple-50 text-purple-600' },
-];
-
-const recentOrders = [
-  { id: 'KNK-00847', customer: 'Rahim Ahmed', items: 2, total: '৳75,998', status: 'Processing', statusColor: 'bg-blue-100 text-blue-700' },
-  { id: 'KNK-00846', customer: 'Fatima Begum', items: 1, total: '৳35,000', status: 'Shipped', statusColor: 'bg-amber-100 text-amber-700' },
-  { id: 'KNK-00845', customer: 'Kamal Hossain', items: 3, total: '৳12,499', status: 'Delivered', statusColor: 'bg-green-100 text-green-700' },
-  { id: 'KNK-00844', customer: 'Nusrat Jahan', items: 1, total: '৳29,999', status: 'Processing', statusColor: 'bg-blue-100 text-blue-700' },
-  { id: 'KNK-00843', customer: 'Imran Khan', items: 2, total: '৳7,498', status: 'Delivered', statusColor: 'bg-green-100 text-green-700' },
-];
-
-export default function AdminDashboard() {
-  const { admin, logout } = useAdminAuth();
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const recentOrders = [
+    { id: 'KK-2026-89412', customer: 'Tanvir Hossain', items: 1, total: '৳46,059', status: 'In Transit', color: 'bg-blue-500/20 text-blue-400' },
+    { id: 'KK-2026-89411', customer: 'Rahim Ahmed', items: 2, total: '৳75,998', status: 'Processing', color: 'bg-amber-500/20 text-amber-400' },
+    { id: 'KK-2026-89410', customer: 'Fatima Begum', items: 1, total: '৳35,000', status: 'Delivered', color: 'bg-emerald-500/20 text-emerald-400' },
+  ];
 
   return (
-    <div className="flex h-screen bg-neutral-50">
-      {/* Sidebar */}
-      <aside className={`${sidebarOpen ? 'w-64' : 'w-16'} bg-brand-charcoal text-white flex flex-col transition-all duration-200 shrink-0`}>
-        {/* Logo */}
-        <div className="h-16 flex items-center gap-3 px-4 border-b border-white/10">
-          <div className="w-8 h-8 bg-brand-blue rounded-lg flex items-center justify-center shrink-0">
-            <span className="text-white font-bold text-sm">K</span>
+    <AdminShell
+      title="Kenakata Command Center"
+      subtitle="Bangladesh Multi-Vendor E-Commerce Platform HQ · Live Operations"
+    >
+      {/* Pending KYC Action Banner */}
+      <div className="bg-gradient-to-r from-amber-950/80 via-slate-900 to-slate-950 border border-amber-500/30 rounded-3xl p-6 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+            <Store className="w-6 h-6" />
           </div>
-          {sidebarOpen && (
-            <div>
-              <span className="font-semibold text-sm">Kenakata</span>
-              <span className="text-[9px] text-neutral-400 block -mt-0.5">Admin Dashboard</span>
+          <div>
+            <div className="flex items-center gap-2">
+              <h3 className="font-bold text-white text-base">New Merchant KYC Application Received</h3>
+              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/30">
+                Action Required
+              </span>
             </div>
-          )}
-          <button onClick={() => setSidebarOpen(!sidebarOpen)} className="ml-auto p-1 hover:bg-white/10 rounded transition-colors">
-            {sidebarOpen ? <ChevronLeft className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-          </button>
-        </div>
-
-        {/* Nav */}
-        <nav className="flex-1 py-4 px-2 space-y-1">
-          {navItems.map(({ icon: Icon, label, href, active }) => (
-            <Link key={label} href={href}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
-                active ? 'bg-brand-blue text-white' : 'text-neutral-400 hover:text-white hover:bg-white/10'
-              }`}>
-              <Icon className="w-5 h-5 shrink-0" />
-              {sidebarOpen && <span>{label}</span>}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Environment marker */}
-        <div className="px-4 py-3 border-t border-white/10">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            {sidebarOpen && <span className="text-xs text-neutral-400">Development</span>}
+            <p className="text-xs text-slate-400 mt-0.5">
+              <strong>Ctg Lifestyle</strong> (Rashedul Karim, Chattogram) submitted Trade License, NID, and Bank Cheque.
+            </p>
           </div>
         </div>
-      </aside>
-
-      {/* Main */}
-      <div className="flex-1 flex flex-col min-w-0">
-        {/* Top bar */}
-        <header className="h-16 bg-white border-b border-neutral-200 flex items-center justify-between px-6 shrink-0">
-          <div className="flex items-center gap-4">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-              <input type="text" placeholder="Search orders, products, customers..."
-                className="pl-10 pr-4 py-2 w-80 rounded-lg border border-neutral-200 bg-neutral-50 text-sm focus:bg-white focus:border-brand-blue focus:outline-none transition-all" />
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <button className="relative p-2 text-neutral-500 hover:bg-neutral-50 rounded-lg transition-colors">
-              <Bell className="w-5 h-5" />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
-            </button>
-            <div className="flex items-center gap-3 pl-3 border-l border-neutral-200">
-              <div className="w-8 h-8 rounded-full bg-brand-blue flex items-center justify-center">
-                <span className="text-white text-xs font-bold">{admin?.name ? admin.name.charAt(0).toUpperCase() : 'A'}</span>
-              </div>
-              <div className="hidden sm:block">
-                <p className="text-xs font-semibold text-neutral-800 leading-tight">{admin?.name || 'Administrator'}</p>
-                <p className="text-[10px] text-neutral-400 font-mono">{admin?.role || 'SUPER_ADMIN'}</p>
-              </div>
-              <button
-                onClick={logout}
-                title="Sign Out"
-                className="p-1.5 text-neutral-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors ml-1"
-              >
-                <LogOut className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-        </header>
-
-        {/* Content */}
-        <main className="flex-1 overflow-y-auto p-6">
-          <div className="max-w-7xl mx-auto">
-            <h1 className="text-2xl font-bold text-brand-charcoal mb-6">Dashboard</h1>
-
-            {/* KPI Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-              {kpiCards.map(({ title, value, change, trend, icon: Icon, color }) => (
-                <div key={title} className="bg-white rounded-xl border border-neutral-100 p-5 hover:shadow-md transition-shadow">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className={`w-10 h-10 rounded-xl ${color} flex items-center justify-center`}>
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <span className={`text-xs font-medium flex items-center gap-0.5 ${
-                      trend === 'up' ? 'text-green-600' : 'text-red-500'
-                    }`}>
-                      {trend === 'up' ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
-                      {change}
-                    </span>
-                  </div>
-                  <p className="text-2xl font-bold text-brand-charcoal tabular-nums">{value}</p>
-                  <p className="text-xs text-neutral-500 mt-0.5">{title}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="grid lg:grid-cols-3 gap-6">
-              {/* Recent Orders */}
-              <div className="lg:col-span-2 bg-white rounded-xl border border-neutral-100">
-                <div className="p-5 border-b border-neutral-100 flex items-center justify-between">
-                  <h2 className="text-lg font-semibold text-brand-charcoal">Recent Orders</h2>
-                  <Link href="/orders" className="text-sm text-brand-blue hover:text-brand-blue-hover">View All</Link>
-                </div>
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead>
-                      <tr className="text-xs text-neutral-500 uppercase tracking-wider">
-                        <th className="px-5 py-3 text-left font-medium">Order</th>
-                        <th className="px-5 py-3 text-left font-medium">Customer</th>
-                        <th className="px-5 py-3 text-left font-medium">Items</th>
-                        <th className="px-5 py-3 text-left font-medium">Total</th>
-                        <th className="px-5 py-3 text-left font-medium">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-neutral-50">
-                      {recentOrders.map(order => (
-                        <tr key={order.id} className="hover:bg-neutral-50 transition-colors">
-                          <td className="px-5 py-3.5 text-sm font-medium text-brand-blue">{order.id}</td>
-                          <td className="px-5 py-3.5 text-sm text-neutral-700">{order.customer}</td>
-                          <td className="px-5 py-3.5 text-sm text-neutral-500">{order.items}</td>
-                          <td className="px-5 py-3.5 text-sm font-medium tabular-nums">{order.total}</td>
-                          <td className="px-5 py-3.5">
-                            <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${order.statusColor}`}>
-                              {order.status}
-                            </span>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              {/* Order Pipeline */}
-              <div className="bg-white rounded-xl border border-neutral-100 p-5">
-                <h2 className="text-lg font-semibold text-brand-charcoal mb-4">Order Pipeline</h2>
-                <div className="space-y-4">
-                  {[
-                    { label: 'Pending Payment', count: 5, color: 'bg-red-400', pct: 10 },
-                    { label: 'Processing', count: 12, color: 'bg-blue-400', pct: 25 },
-                    { label: 'Packed', count: 8, color: 'bg-amber-400', pct: 17 },
-                    { label: 'Shipped', count: 15, color: 'bg-purple-400', pct: 31 },
-                    { label: 'Delivered', count: 125, color: 'bg-green-400', pct: 100 },
-                  ].map(stage => (
-                    <div key={stage.label}>
-                      <div className="flex items-center justify-between text-sm mb-1">
-                        <span className="text-neutral-600">{stage.label}</span>
-                        <span className="font-medium text-brand-charcoal">{stage.count}</span>
-                      </div>
-                      <div className="h-2 bg-neutral-100 rounded-full overflow-hidden">
-                        <div className={`h-full ${stage.color} rounded-full transition-all`} style={{ width: `${stage.pct}%` }} />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Quick stats */}
-                <div className="mt-6 pt-4 border-t border-neutral-100 grid grid-cols-2 gap-4">
-                  <div className="text-center">
-                    <p className="text-2xl font-bold text-brand-charcoal">94%</p>
-                    <p className="text-xs text-neutral-500">Fulfilment Rate</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-2xl font-bold text-brand-charcoal">2.3d</p>
-                    <p className="text-xs text-neutral-500">Avg. Delivery Time</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
+        <Link
+          href="/merchants/merch-ctg-01"
+          className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs shadow-lg shadow-amber-500/20 transition-all flex items-center gap-1.5 shrink-0"
+        >
+          <span>Review Application</span>
+          <ArrowRight className="w-4 h-4" />
+        </Link>
       </div>
-    </div>
+
+      {/* KPI Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {kpiCards.map((kpi, idx) => {
+          const Icon = kpi.icon;
+          return (
+            <div key={idx} className="bg-slate-950/80 border border-slate-800 rounded-2xl p-5 shadow-sm space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{kpi.title}</span>
+                <div className={`w-8 h-8 rounded-xl flex items-center justify-center ${kpi.color}`}>
+                  <Icon className="w-4 h-4" />
+                </div>
+              </div>
+              <p className="text-2xl font-bold font-mono text-white">{kpi.value}</p>
+              <p className={`text-[11px] font-semibold flex items-center gap-1 ${kpi.alert ? 'text-amber-400' : 'text-emerald-400'}`}>
+                {!kpi.alert && <TrendingUp className="w-3 h-3" />}
+                {kpi.change}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Main Grid: Orders & Quick Stats */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Left: Orders Pipeline */}
+        <div className="lg:col-span-2 bg-slate-950/80 border border-slate-800 rounded-2xl p-6 shadow-xl">
+          <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+            <div>
+              <h3 className="font-bold text-base text-white">Recent Orders Fulfillment</h3>
+              <p className="text-xs text-slate-400">Live order queue from storefront</p>
+            </div>
+            <Link
+              href="/orders"
+              className="text-xs text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1"
+            >
+              <span>View All</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="divide-y divide-slate-800/60 mt-2">
+            {recentOrders.map((ord) => (
+              <div key={ord.id} className="py-3.5 flex items-center justify-between">
+                <div>
+                  <p className="font-mono font-bold text-white text-xs">{ord.id}</p>
+                  <p className="text-[11px] text-slate-400">{ord.customer} · {ord.items} item</p>
+                </div>
+                <div className="text-right">
+                  <p className="font-mono font-bold text-white text-xs">{ord.total}</p>
+                  <span className={`inline-block px-2 py-0.5 rounded-md text-[10px] font-semibold font-mono mt-0.5 ${ord.color}`}>
+                    {ord.status}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right: Quick Links & Infrastructure */}
+        <div className="space-y-6">
+          <div className="bg-slate-950/80 border border-slate-800 rounded-2xl p-6 space-y-3">
+            <h3 className="font-bold text-sm text-white">Multi-Vendor Portals</h3>
+            <div className="space-y-2">
+              <Link
+                href="/merchants"
+                className="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 hover:bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-200 transition-colors"
+              >
+                <div className="flex items-center gap-2.5">
+                  <Store className="w-4 h-4 text-emerald-400" />
+                  <span>Merchant KYC Queue</span>
+                </div>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-mono font-bold">
+                  1 Review
+                </span>
+              </Link>
+              <Link
+                href="/products/approvals"
+                className="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 hover:bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-200 transition-colors"
+              >
+                <div className="flex items-center gap-2.5">
+                  <CheckSquare className="w-4 h-4 text-emerald-400" />
+                  <span>Vendor Product Approvals</span>
+                </div>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono font-bold">
+                  2 Pending
+                </span>
+              </Link>
+              <Link
+                href="/payouts"
+                className="flex items-center justify-between p-3 rounded-xl bg-slate-900/80 hover:bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-200 transition-colors"
+              >
+                <div className="flex items-center gap-2.5">
+                  <DollarSign className="w-4 h-4 text-emerald-400" />
+                  <span>Merchant Payouts</span>
+                </div>
+                <span className="text-[10px] font-mono text-slate-400">৳35,000</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </AdminShell>
   );
 }

@@ -608,8 +608,264 @@ async function main() {
     });
   }
 
+  // 9. Merchants, Shops & KYC Intakes
+  console.log('9. Seeding Multi-Vendor Merchants & KYC Verification Records...');
+  const merchantPasswordHash = await bcrypt.hash('Shop@123456', 10);
+
+  // 9A. Approved Live Merchant (Dhaka Tech Hub)
+  const approvedMerchant = await prisma.merchant.upsert({
+    where: { email: 'dhaka.electronics@kenakata.co' },
+    update: {},
+    create: {
+      email: 'dhaka.electronics@kenakata.co',
+      phone: '+8801711223344',
+      name: 'Tanvir Hossain',
+      passwordHash: merchantPasswordHash,
+      status: 'APPROVED',
+      commissionRate: 5.0,
+      verifiedAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+      verifiedBy: 'Compliance Lead',
+      shop: {
+        create: {
+          name: 'Dhaka Tech Hub',
+          slug: 'dhaka-tech-hub',
+          description: 'Premier authorized distributor for consumer electronics and smart accessories in Dhaka.',
+          entityType: 'PRIVATE_LIMITED',
+          tradeLicenseNo: 'TL-DHK-2024-9812',
+          tradeLicenseExpiry: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
+          tinNo: '123456789012',
+          binNo: '987654321098',
+          nidNo: '19902692812345678',
+          division: 'Dhaka',
+          district: 'Dhaka',
+          upazila: 'Motijheel',
+          fullAddress: 'Level 4, BCS Computer City, Dhaka 1205',
+          pickupAddress: 'Shop 42, Multiplan Center, Elephant Road, Dhaka',
+          contactPhone: '+8801711223344',
+          contactEmail: 'dhaka.electronics@kenakata.co',
+          logoUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=200',
+          bannerUrl: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1200',
+          isVerified: true,
+          rating: 4.9,
+          totalSalesMinor: BigInt(28500000),
+        },
+      },
+      kycDocuments: {
+        create: [
+          {
+            documentType: 'TRADE_LICENSE',
+            documentNumber: 'TL-DHK-2024-9812',
+            fileUrl: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800',
+            fileName: 'Trade_License_2026_DhakaTech.pdf',
+            fileSize: 1420000,
+            mimeType: 'application/pdf',
+            status: 'VERIFIED',
+            verifiedAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+            verifiedBy: 'Compliance Lead',
+          },
+          {
+            documentType: 'NID_FRONT',
+            documentNumber: '19902692812345678',
+            fileUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800',
+            fileName: 'NID_Tanvir_Front.jpg',
+            fileSize: 850000,
+            mimeType: 'image/jpeg',
+            status: 'VERIFIED',
+            verifiedAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+            verifiedBy: 'Compliance Lead',
+          },
+          {
+            documentType: 'TIN_CERTIFICATE',
+            documentNumber: '123456789012',
+            fileUrl: 'https://images.unsplash.com/photo-1450133064473-71024230f91b?w=800',
+            fileName: 'eTIN_Certificate_DhakaTech.pdf',
+            fileSize: 620000,
+            mimeType: 'application/pdf',
+            status: 'VERIFIED',
+            verifiedAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+            verifiedBy: 'Compliance Lead',
+          },
+          {
+            documentType: 'BANK_CHEQUE',
+            fileUrl: 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=800',
+            fileName: 'BRAC_Bank_Cheque_Leaf.jpg',
+            fileSize: 1100000,
+            mimeType: 'image/jpeg',
+            status: 'VERIFIED',
+            verifiedAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
+            verifiedBy: 'Compliance Lead',
+          },
+        ],
+      },
+      bankAccounts: {
+        create: [
+          {
+            accountType: 'BANK_ACCOUNT',
+            bankName: 'BRAC Bank PLC',
+            branchName: 'Gulshan 1 Branch',
+            routingNumber: '060261234',
+            accountHolderName: 'Dhaka Tech Hub Ltd',
+            accountNumber: '1501203456789001',
+            isDefault: true,
+            isVerified: true,
+          },
+        ],
+      },
+    },
+    include: { shop: true },
+  });
+
+  // Link initial seeded products to approved merchant
+  if (approvedMerchant.shop) {
+    await prisma.product.updateMany({
+      where: { category: { slug: { in: ['smartphones', 'electronics'] } } },
+      data: {
+        shopId: approvedMerchant.shop.id,
+        approvalStatus: 'APPROVED',
+        approvedAt: new Date(),
+        approvedBy: 'Admin Catalog Team',
+      },
+    });
+  }
+
+  // 9B. Pending KYC Review Merchant (Ctg Lifestyle)
+  await prisma.merchant.upsert({
+    where: { email: 'ctg.fashion@kenakata.co' },
+    update: {},
+    create: {
+      email: 'ctg.fashion@kenakata.co',
+      phone: '+8801819988776',
+      name: 'Rashedul Karim',
+      passwordHash: merchantPasswordHash,
+      status: 'UNDER_REVIEW',
+      commissionRate: 6.0,
+      shop: {
+        create: {
+          name: 'Ctg Lifestyle',
+          slug: 'ctg-lifestyle',
+          description: 'Contemporary ethnic wear, formal leather shoes, and traditional artisanal crafts from Chattogram.',
+          entityType: 'SOLE_PROPRIETORSHIP',
+          tradeLicenseNo: 'TL-CTG-2025-4519',
+          tradeLicenseExpiry: new Date(Date.now() + 280 * 24 * 60 * 60 * 1000),
+          tinNo: '987654321987',
+          nidNo: '19882691234567890',
+          division: 'Chattogram',
+          district: 'Chattogram',
+          upazila: 'Agrabad',
+          fullAddress: 'Shop 12, GEC Circle Plaza, Chattogram 4000',
+          pickupAddress: 'Shop 12, GEC Circle Plaza, Chattogram 4000',
+          contactPhone: '+8801819988776',
+          contactEmail: 'ctg.fashion@kenakata.co',
+          isVerified: false,
+        },
+      },
+      kycDocuments: {
+        create: [
+          {
+            documentType: 'TRADE_LICENSE',
+            documentNumber: 'TL-CTG-2025-4519',
+            fileUrl: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800',
+            fileName: 'Trade_License_Ctg_2026.pdf',
+            fileSize: 1250000,
+            mimeType: 'application/pdf',
+            status: 'PENDING',
+          },
+          {
+            documentType: 'NID_FRONT',
+            documentNumber: '19882691234567890',
+            fileUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800',
+            fileName: 'NID_Rashedul_Front.jpg',
+            fileSize: 720000,
+            mimeType: 'image/jpeg',
+            status: 'PENDING',
+          },
+          {
+            documentType: 'NID_BACK',
+            fileUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800',
+            fileName: 'NID_Rashedul_Back.jpg',
+            fileSize: 710000,
+            mimeType: 'image/jpeg',
+            status: 'PENDING',
+          },
+          {
+            documentType: 'BANK_CHEQUE',
+            fileUrl: 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=800',
+            fileName: 'Islami_Bank_Cheque.jpg',
+            fileSize: 940000,
+            mimeType: 'image/jpeg',
+            status: 'PENDING',
+          },
+        ],
+      },
+      bankAccounts: {
+        create: [
+          {
+            accountType: 'BANK_ACCOUNT',
+            bankName: 'Islami Bank Bangladesh PLC',
+            branchName: 'Agrabad Branch',
+            routingNumber: '125261890',
+            accountHolderName: 'Ctg Lifestyle Enterprise',
+            accountNumber: '2050123456789012',
+            isDefault: true,
+            isVerified: false,
+          },
+        ],
+      },
+    },
+  });
+
+  // 9C. Rejected / Resubmission Required Merchant (Sylhet Tea & Agro)
+  await prisma.merchant.upsert({
+    where: { email: 'sylhet.organic@kenakata.co' },
+    update: {},
+    create: {
+      email: 'sylhet.organic@kenakata.co',
+      phone: '+8801915544332',
+      name: 'Nazmul Islam',
+      passwordHash: merchantPasswordHash,
+      status: 'REJECTED',
+      rejectionReason: 'Trade License expired on December 31, 2025. Please upload a renewed 2026-2027 valid copy.',
+      shop: {
+        create: {
+          name: 'Sylhet Tea & Agro',
+          slug: 'sylhet-tea-agro',
+          description: 'Finest organic Sylhet garden tea, cold pressed oils, and authentic natural foods.',
+          entityType: 'PARTNERSHIP',
+          tradeLicenseNo: 'TL-SYL-2023-1102',
+          tinNo: '556677889900',
+          nidNo: '19922693456789012',
+          division: 'Sylhet',
+          district: 'Sylhet',
+          upazila: 'Kotwali',
+          fullAddress: 'Zindabazar Commercial Area, Sylhet 3100',
+          contactPhone: '+8801915544332',
+          contactEmail: 'sylhet.organic@kenakata.co',
+          isVerified: false,
+        },
+      },
+      kycDocuments: {
+        create: [
+          {
+            documentType: 'TRADE_LICENSE',
+            documentNumber: 'TL-SYL-2023-1102',
+            fileUrl: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800',
+            fileName: 'Old_Trade_License_2024.pdf',
+            fileSize: 890000,
+            mimeType: 'application/pdf',
+            status: 'REJECTED',
+            rejectionReason: 'Document is expired. Valid copy required.',
+          },
+        ],
+      },
+    },
+  });
+
   console.log('✅ Seed completed successfully!');
   console.log('Admin Account: admin@kenakata.co / Admin@123456');
+  console.log('Approved Merchant Shop: dhaka.electronics@kenakata.co / Shop@123456 (Dhaka Tech Hub)');
+  console.log('Pending Review Shop: ctg.fashion@kenakata.co / Shop@123456 (Ctg Lifestyle)');
+  console.log('Rejected/Resubmission Shop: sylhet.organic@kenakata.co / Shop@123456 (Sylhet Tea & Agro)');
+  console.log('Customer Account: customer@kenakata.co / +8801712345678 (PIN: 123456)');
   console.log('Demo Tracking Order: KK-2026-89412 (+8801712345678)');
 }
 

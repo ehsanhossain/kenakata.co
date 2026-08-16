@@ -367,9 +367,14 @@ model Product {
   id              String        @id @default(uuid()) @db.Uuid
   categoryId      String        @db.Uuid @map("category_id")
   brandId         String?       @db.Uuid @map("brand_id")
+  shopId          String?       @db.Uuid @map("shop_id")
   slug            String        @unique
   status          ProductStatus @default(DRAFT)
-  returnPolicyCode String        @map("return_policy_code")
+  approvalStatus  ProductApprovalStatus @default(APPROVED) @map("approval_status")
+  rejectionReason String?       @map("rejection_reason")
+  approvedAt      DateTime?     @map("approved_at")
+  approvedBy      String?       @map("approved_by")
+  returnPolicyCode String       @map("return_policy_code")
   warrantyCode    String?       @map("warranty_code")
   taxClassCode    String        @map("tax_class_code")
   publishedAt     DateTime?     @map("published_at")
@@ -378,6 +383,7 @@ model Product {
   updatedAt       DateTime      @updatedAt @map("updated_at")
   category        Category      @relation(fields: [categoryId], references: [id])
   brand           Brand?        @relation(fields: [brandId], references: [id])
+  shop            Shop?         @relation(fields: [shopId], references: [id], onDelete: SetNull)
   translations    ProductTranslation[]
   variants        ProductVariant[]
   media           ProductMedia[]
@@ -932,4 +938,176 @@ model IdempotencyRecord {
   @@unique([scope, key])
   @@index([expiresAt])
   @@map("idempotency_records")
+}
+
+enum MerchantStatus {
+  PENDING_ONBOARDING
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  SUSPENDED
+}
+
+enum BusinessEntityType {
+  SOLE_PROPRIETORSHIP
+  PARTNERSHIP
+  PRIVATE_LIMITED
+  INDIVIDUAL
+}
+
+enum KycDocumentType {
+  TRADE_LICENSE
+  NID_FRONT
+  NID_BACK
+  TIN_CERTIFICATE
+  BIN_CERTIFICATE
+  BANK_CHEQUE
+  UTILITY_BILL
+  AUTHORIZATION_LETTER
+}
+
+enum KycStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+  RESUBMISSION_REQUESTED
+}
+
+enum ProductApprovalStatus {
+  DRAFT
+  PENDING_APPROVAL
+  APPROVED
+  REJECTED
+}
+
+enum PayoutStatus {
+  REQUESTED
+  PROCESSING
+  TRANSFERRED
+  FAILED
+  REJECTED
+}
+
+model Merchant {
+  id              String         @id @default(uuid()) @db.Uuid
+  email           String         @unique
+  phone           String         @unique
+  name            String
+  passwordHash    String         @map("password_hash")
+  status          MerchantStatus @default(PENDING_ONBOARDING)
+  commissionRate  Float          @default(5.0) @map("commission_rate")
+  verifiedAt      DateTime?      @map("verified_at")
+  verifiedBy      String?        @map("verified_by")
+  rejectionReason String?        @map("rejection_reason")
+  createdAt       DateTime       @default(now()) @map("created_at")
+  updatedAt       DateTime       @updatedAt @map("updated_at")
+  shop            Shop?
+  kycDocuments    MerchantKycDocument[]
+  bankAccounts    MerchantBankAccount[]
+  payouts         MerchantPayout[]
+
+  @@map("merchants")
+}
+
+model Shop {
+  id                String             @id @default(uuid()) @db.Uuid
+  merchantId        String             @unique @db.Uuid @map("merchant_id")
+  name              String
+  slug              String             @unique
+  description       String?
+  entityType        BusinessEntityType @default(SOLE_PROPRIETORSHIP) @map("entity_type")
+  tradeLicenseNo    String?            @map("trade_license_no")
+  tradeLicenseExpiry DateTime?         @map("trade_license_expiry")
+  tinNo             String?            @map("tin_no")
+  binNo             String?            @map("bin_no")
+  nidNo             String?            @map("nid_no")
+  division          String?
+  district          String?
+  upazila           String?
+  fullAddress       String?            @map("full_address")
+  pickupAddress     String?            @map("pickup_address")
+  contactPhone      String?            @map("contact_phone")
+  contactEmail      String?            @map("contact_email")
+  logoUrl           String?            @map("logo_url")
+  bannerUrl         String?            @map("banner_url")
+  isVerified        Boolean            @default(false) @map("is_verified")
+  rating            Float              @default(5.0)
+  totalSalesMinor   BigInt             @default(0) @map("total_sales_minor")
+  createdAt         DateTime           @default(now()) @map("created_at")
+  updatedAt         DateTime           @updatedAt @map("updated_at")
+  merchant          Merchant           @relation(fields: [merchantId], references: [id], onDelete: Cascade)
+  products          Product[]
+  kycDocuments      MerchantKycDocument[]
+  bankAccounts      MerchantBankAccount[]
+  payouts           MerchantPayout[]
+
+  @@map("shops")
+}
+
+model MerchantKycDocument {
+  id              String          @id @default(uuid()) @db.Uuid
+  merchantId      String          @db.Uuid @map("merchant_id")
+  shopId          String?         @db.Uuid @map("shop_id")
+  documentType    KycDocumentType @map("document_type")
+  documentNumber  String?         @map("document_number")
+  fileUrl         String          @map("file_url")
+  fileName        String?         @map("file_name")
+  fileSize        Int?            @map("file_size")
+  mimeType        String?         @map("mime_type")
+  status          KycStatus       @default(PENDING)
+  rejectionReason String?         @map("rejection_reason")
+  submittedAt     DateTime        @default(now()) @map("submitted_at")
+  verifiedAt      DateTime?       @map("verified_at")
+  verifiedBy      String?         @map("verified_by")
+  createdAt       DateTime        @default(now()) @map("created_at")
+  updatedAt       DateTime        @updatedAt @map("updated_at")
+  merchant        Merchant        @relation(fields: [merchantId], references: [id], onDelete: Cascade)
+  shop            Shop?           @relation(fields: [shopId], references: [id], onDelete: SetNull)
+
+  @@index([merchantId, status])
+  @@map("merchant_kyc_documents")
+}
+
+model MerchantBankAccount {
+  id                String    @id @default(uuid()) @db.Uuid
+  merchantId        String    @db.Uuid @map("merchant_id")
+  shopId            String?   @db.Uuid @map("shop_id")
+  accountType       String    @default("BANK_ACCOUNT") @map("account_type")
+  bankName          String?   @map("bank_name")
+  branchName        String?   @map("branch_name")
+  routingNumber     String?   @map("routing_number")
+  accountHolderName String?   @map("account_holder_name")
+  accountNumber     String?   @map("account_number")
+  mfsNumber         String?   @map("mfs_number")
+  isDefault         Boolean   @default(true) @map("is_default")
+  isVerified        Boolean   @default(false) @map("is_verified")
+  createdAt         DateTime  @default(now()) @map("created_at")
+  updatedAt         DateTime  @updatedAt @map("updated_at")
+  merchant          Merchant  @relation(fields: [merchantId], references: [id], onDelete: Cascade)
+  shop              Shop?     @relation(fields: [shopId], references: [id], onDelete: SetNull)
+
+  @@map("merchant_bank_accounts")
+}
+
+model MerchantPayout {
+  id                String       @id @default(uuid()) @db.Uuid
+  merchantId        String       @db.Uuid @map("merchant_id")
+  shopId            String?      @db.Uuid @map("shop_id")
+  amountMinor       BigInt       @map("amount_minor")
+  feeMinor          BigInt       @default(0) @map("fee_minor")
+  netAmountMinor    BigInt       @map("net_amount_minor")
+  currency          String       @default("BDT")
+  status            PayoutStatus @default(REQUESTED)
+  paymentMethod     String       @default("BANK_TRANSFER") @map("payment_method")
+  destinationInfo   Json?        @map("destination_info")
+  transactionRef    String?      @map("transaction_ref")
+  failureReason     String?      @map("failure_reason")
+  requestedAt       DateTime     @default(now()) @map("requested_at")
+  processedAt       DateTime?    @map("processed_at")
+  processedBy       String?      @map("processed_by")
+  merchant          Merchant     @relation(fields: [merchantId], references: [id], onDelete: Cascade)
+  shop              Shop?        @relation(fields: [shopId], references: [id], onDelete: SetNull)
+
+  @@index([merchantId, status])
+  @@map("merchant_payouts")
 }

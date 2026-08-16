@@ -12,6 +12,9 @@ const config: Config = {
           blue: '#1976D2',
           'blue-hover': '#125FA9',
           'blue-soft': '#E8F2FC',
+          emerald: '#059669',
+          'emerald-hover': '#047857',
+          'emerald-soft': '#ECFDF5',
         },
         neutral: {
           0: '#FFFFFF',

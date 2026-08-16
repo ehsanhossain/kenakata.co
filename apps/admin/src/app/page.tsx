@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useAdminAuth } from '../context/AdminAuthContext';
 import {
   LayoutDashboard, ShoppingBag, Package, Users, Settings, BarChart3,
   Warehouse, ChevronLeft, Menu, Bell, Search, User, LogOut,
@@ -34,6 +35,7 @@ const recentOrders = [
 ];
 
 export default function AdminDashboard() {
+  const { admin, logout } = useAdminAuth();
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   return (
@@ -94,11 +96,21 @@ export default function AdminDashboard() {
               <Bell className="w-5 h-5" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
             </button>
-            <div className="flex items-center gap-2 pl-3 border-l border-neutral-200">
+            <div className="flex items-center gap-3 pl-3 border-l border-neutral-200">
               <div className="w-8 h-8 rounded-full bg-brand-blue flex items-center justify-center">
-                <span className="text-white text-xs font-bold">A</span>
+                <span className="text-white text-xs font-bold">{admin?.name ? admin.name.charAt(0).toUpperCase() : 'A'}</span>
               </div>
-              <span className="text-sm font-medium text-neutral-700">Admin</span>
+              <div className="hidden sm:block">
+                <p className="text-xs font-semibold text-neutral-800 leading-tight">{admin?.name || 'Administrator'}</p>
+                <p className="text-[10px] text-neutral-400 font-mono">{admin?.role || 'SUPER_ADMIN'}</p>
+              </div>
+              <button
+                onClick={logout}
+                title="Sign Out"
+                className="p-1.5 text-neutral-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors ml-1"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
             </div>
           </div>
         </header>

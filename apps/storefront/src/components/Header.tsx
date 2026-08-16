@@ -3,9 +3,13 @@
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { Search, User, Heart, ShoppingCart, Menu, X, ChevronDown, Globe, Package } from 'lucide-react';
-import { categories, trendingSearches } from '@/lib/mock-data';
+import { categories, trendingSearches } from '../lib/mock-data';
+import { useAuth } from '../context/AuthContext';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Header() {
+  const { user, openAuthModal, logout } = useAuth();
+  const { isBn, toggleLocale } = useLanguage();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
@@ -148,19 +152,56 @@ export default function Header() {
           {/* ── Right actions ── */}
           <div className="flex items-center gap-1 ml-auto">
             {/* Language toggle */}
-            <button className="hidden md:flex items-center gap-1.5 px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-50 rounded-md transition-colors duration-fast">
-              <Globe className="w-4 h-4" />
-              <span>EN</span>
+            <button
+              onClick={toggleLocale}
+              className="hidden md:flex items-center gap-1.5 px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-50 rounded-md transition-colors duration-fast font-medium"
+            >
+              <Globe className="w-4 h-4 text-brand-emerald" />
+              <span>{isBn ? 'বাংলা' : 'EN'}</span>
             </button>
 
-            {/* Account */}
-            <Link
-              href="/account"
-              className="flex items-center gap-1.5 px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-50 rounded-md transition-colors duration-fast"
-            >
-              <User className="w-5 h-5" />
-              <span className="hidden lg:inline">Account</span>
-            </Link>
+            {/* Account (Logged In vs Modal Trigger) */}
+            {user ? (
+              <div className="relative group">
+                <button className="flex items-center gap-2 px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-50 rounded-md transition-colors duration-fast">
+                  <div className="w-7 h-7 rounded-full bg-brand-emerald/20 text-brand-emerald font-bold flex items-center justify-center text-xs">
+                    {user.name ? user.name.charAt(0).toUpperCase() : 'C'}
+                  </div>
+                  <span className="hidden lg:inline font-medium max-w-[100px] truncate">{user.name || user.phone}</span>
+                  <ChevronDown className="w-3.5 h-3.5 text-neutral-400" />
+                </button>
+
+                {/* Dropdown */}
+                <div className="absolute right-0 top-full mt-1 w-48 bg-white dark:bg-slate-900 rounded-xl shadow-xl border border-slate-100 dark:border-slate-800 py-2 hidden group-hover:block z-50 animate-fadeIn">
+                  <div className="px-4 py-2 border-b border-slate-100 dark:border-slate-800">
+                    <p className="text-xs font-bold text-slate-800 dark:text-white truncate">{user.name || 'Kenakata Customer'}</p>
+                    <p className="text-[11px] text-slate-400 truncate">{user.phone}</p>
+                  </div>
+                  <Link href="/account/orders" className="flex items-center gap-2 px-4 py-2 text-xs text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800">
+                    <Package className="w-3.5 h-3.5" />
+                    {isBn ? 'আমার অর্ডারসমূহ' : 'My Orders'}
+                  </Link>
+                  <Link href="/account/profile" className="flex items-center gap-2 px-4 py-2 text-xs text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800">
+                    <User className="w-3.5 h-3.5" />
+                    {isBn ? 'প্রোফাইল সেটিংস' : 'Profile Settings'}
+                  </Link>
+                  <button
+                    onClick={() => logout()}
+                    className="w-full text-left flex items-center gap-2 px-4 py-2 text-xs text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 border-t border-slate-100 dark:border-slate-800 mt-1"
+                  >
+                    <span>{isBn ? 'লগআউট' : 'Sign Out'}</span>
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <button
+                onClick={() => openAuthModal('login')}
+                className="flex items-center gap-1.5 px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-50 rounded-md transition-colors duration-fast font-medium"
+              >
+                <User className="w-5 h-5 text-brand-emerald" />
+                <span className="hidden lg:inline">{isBn ? 'লগইন' : 'Sign In'}</span>
+              </button>
+            )}
 
             {/* Wishlist */}
             <Link

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { User, Package, MapPin, ShieldCheck, Heart, LogOut, ChevronRight } from 'lucide-react';
+import { useAuth } from '../../../context/AuthContext';
 
 const navItems = [
   { icon: User, label: 'Overview', href: '/account' },
@@ -14,6 +15,7 @@ const navItems = [
 
 export default function AccountLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const { user, logout, openAuthModal } = useAuth();
 
   return (
     <div className="container-page py-6 sm:py-8">
@@ -23,13 +25,15 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
           <div className="sticky top-[140px]">
             {/* Profile summary */}
             <div className="bg-white rounded-xl border border-neutral-100 p-5 mb-4 shadow-sm">
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-2">
                 <div className="w-12 h-12 rounded-full bg-brand-blue flex items-center justify-center">
-                  <span className="text-white text-lg font-bold">R</span>
+                  <span className="text-white text-lg font-bold">
+                    {user?.name ? user.name.charAt(0).toUpperCase() : 'K'}
+                  </span>
                 </div>
-                <div>
-                  <p className="font-semibold text-brand-charcoal">Rahim Ahmed</p>
-                  <p className="text-xs text-neutral-500">rahim@email.com</p>
+                <div className="min-w-0">
+                  <p className="font-semibold text-brand-charcoal truncate">{user?.name || 'Kenakata Member'}</p>
+                  <p className="text-xs text-neutral-500 truncate">{user?.phone || user?.email || 'Logged In'}</p>
                 </div>
               </div>
             </div>
@@ -54,9 +58,21 @@ export default function AccountLayout({ children }: { children: React.ReactNode 
                   </Link>
                 );
               })}
-              <button className="flex items-center gap-3 px-4 py-3.5 text-sm text-semantic-danger hover:bg-semantic-danger-soft w-full transition-colors">
-                <LogOut className="w-4.5 h-4.5" /> Log Out
-              </button>
+              {user ? (
+                <button
+                  onClick={() => logout()}
+                  className="flex items-center gap-3 px-4 py-3.5 text-sm text-semantic-danger hover:bg-semantic-danger-soft w-full transition-colors font-medium text-left"
+                >
+                  <LogOut className="w-4.5 h-4.5" /> Log Out
+                </button>
+              ) : (
+                <button
+                  onClick={() => openAuthModal('login')}
+                  className="flex items-center gap-3 px-4 py-3.5 text-sm text-brand-blue hover:bg-brand-blue-soft w-full transition-colors font-medium text-left"
+                >
+                  <User className="w-4.5 h-4.5" /> Sign In
+                </button>
+              )}
             </nav>
           </div>
         </aside>

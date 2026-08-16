@@ -1,15 +1,34 @@
 'use client';
 
 import { useState } from 'react';
-import { User, Phone, Mail, Globe, ShieldCheck, Smartphone, Clock, Save, Eye, EyeOff } from 'lucide-react';
+import { User, Phone, Mail, Globe, ShieldCheck, Smartphone, Clock, Save, Eye, EyeOff, CheckCircle2 } from 'lucide-react';
+import { useAuth } from '../../../../context/AuthContext';
 
 export default function ProfilePage() {
+  const { user, updateUserProfile } = useAuth();
   const [editing, setEditing] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [name, setName] = useState(user?.name || 'Kenakata Member');
+  const [email, setEmail] = useState(user?.email || '');
+  const [savedMsg, setSavedMsg] = useState(false);
+
+  const handleSave = async () => {
+    await updateUserProfile({ name, email });
+    setEditing(false);
+    setSavedMsg(true);
+    setTimeout(() => setSavedMsg(false), 3000);
+  };
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-brand-charcoal">Profile & Security</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-2xl font-bold text-brand-charcoal">Profile & Security</h1>
+        {savedMsg && (
+          <span className="flex items-center gap-1 text-xs font-semibold text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-200">
+            <CheckCircle2 className="w-3.5 h-3.5" /> Saved successfully
+          </span>
+        )}
+      </div>
 
       {/* Personal Info */}
       <div className="bg-white rounded-xl border border-neutral-100 shadow-sm p-5 sm:p-6">
@@ -22,7 +41,9 @@ export default function ProfilePage() {
         <div className="space-y-4">
           <div className="flex items-center gap-4">
             <div className="w-16 h-16 rounded-full bg-brand-blue flex items-center justify-center shrink-0">
-              <span className="text-white text-2xl font-bold">R</span>
+              <span className="text-white text-2xl font-bold">
+                {name ? name.charAt(0).toUpperCase() : 'K'}
+              </span>
             </div>
             {editing && (
               <button className="text-sm text-brand-blue hover:underline">Change Photo</button>
@@ -32,23 +53,33 @@ export default function ProfilePage() {
             <div>
               <label className="block text-sm font-medium text-neutral-700 mb-1.5">Full Name</label>
               {editing ? (
-                <input type="text" defaultValue="Rahim Ahmed" className="input" />
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="input"
+                />
               ) : (
-                <p className="text-sm text-brand-charcoal py-2">Rahim Ahmed</p>
+                <p className="text-sm text-brand-charcoal py-2 font-medium">{user?.name || name}</p>
               )}
             </div>
             <div>
               <label className="block text-sm font-medium text-neutral-700 mb-1.5">Phone</label>
-              <p className="text-sm text-brand-charcoal py-2 flex items-center gap-2">
-                01712345678 <span className="badge-green text-[10px]">Verified</span>
+              <p className="text-sm text-brand-charcoal py-2 flex items-center gap-2 font-medium">
+                {user?.phone || '+8801712345678'} <span className="badge-green text-[10px]">Verified</span>
               </p>
             </div>
             <div>
               <label className="block text-sm font-medium text-neutral-700 mb-1.5">Email</label>
               {editing ? (
-                <input type="email" defaultValue="rahim@email.com" className="input" />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="input"
+                />
               ) : (
-                <p className="text-sm text-brand-charcoal py-2">rahim@email.com</p>
+                <p className="text-sm text-brand-charcoal py-2">{user?.email || 'Not provided'}</p>
               )}
             </div>
             <div>
@@ -64,7 +95,7 @@ export default function ProfilePage() {
             </div>
           </div>
           {editing && (
-            <button className="btn-primary mt-2">
+            <button onClick={handleSave} className="btn-primary mt-2 flex items-center gap-2">
               <Save className="w-4 h-4" /> Save Changes
             </button>
           )}

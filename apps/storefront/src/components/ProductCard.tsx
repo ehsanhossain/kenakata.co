@@ -1,7 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { Heart, Star, ShoppingBag } from 'lucide-react';
+import {
+  Heart, Star, ShoppingBag
+} from '@phosphor-icons/react';
 import { type Product, formatBDT, calcDiscount } from '@/lib/mock-data';
 
 interface ProductCardProps {
@@ -24,7 +26,7 @@ export default function ProductCard({ product, variant = 'standard' }: ProductCa
             }}
           />
           <div className="absolute inset-0 flex items-center justify-center">
-            <ShoppingBag className="w-8 h-8 text-neutral-300" />
+            <ShoppingBag className="w-8 h-8 text-content-disabled" />
           </div>
           {discount && (
             <span className="absolute top-1.5 left-1.5 badge-red text-[10px] py-0">
@@ -35,8 +37,8 @@ export default function ProductCard({ product, variant = 'standard' }: ProductCa
         {/* Info */}
         <div className="flex-1 min-w-0 flex flex-col justify-between py-0.5">
           <div>
-            <p className="text-xs text-neutral-500 mb-0.5">{product.brand}</p>
-            <h3 className="text-sm font-medium text-brand-charcoal line-clamp-2 group-hover:text-brand-blue transition-colors">
+            <p className="text-xs text-content-tertiary mb-0.5">{product.brand}</p>
+            <h3 className="text-sm font-medium text-content-primary line-clamp-2 group-hover:text-content-brand transition-colors">
               {product.title}
             </h3>
           </div>
@@ -54,7 +56,7 @@ export default function ProductCard({ product, variant = 'standard' }: ProductCa
   return (
     <div className="card group relative">
       <Link href={`/products/${product.slug}`} className="block">
-        {/* ── Image ── */}
+        {/* Image */}
         <div className={`relative overflow-hidden ${variant === 'compact' ? 'aspect-square' : 'aspect-[4/5]'}`}>
           <div
             className="absolute inset-0 product-image-placeholder transition-transform duration-slow group-hover:scale-[1.03]"
@@ -66,7 +68,7 @@ export default function ProductCard({ product, variant = 'standard' }: ProductCa
               }}
             />
             <div className="absolute inset-0 flex items-center justify-center">
-              <ShoppingBag className="w-12 h-12 text-neutral-300/60" />
+              <ShoppingBag className="w-12 h-12 text-content-disabled opacity-60" />
             </div>
           </div>
 
@@ -78,7 +80,7 @@ export default function ProductCard({ product, variant = 'standard' }: ProductCa
               </span>
             )}
             {product.isNew && (
-              <span className="badge-blue text-[11px] font-semibold px-2 py-0.5">
+              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-info-surface text-info">
                 NEW
               </span>
             )}
@@ -87,24 +89,24 @@ export default function ProductCard({ product, variant = 'standard' }: ProductCa
           {/* Out of stock overlay */}
           {!product.inStock && (
             <div className="absolute inset-0 bg-white/70 flex items-center justify-center z-10">
-              <span className="bg-neutral-800 text-white text-xs font-medium px-3 py-1.5 rounded-md">
+              <span className="bg-surface-inverse text-content-inverse text-xs font-medium px-3 py-1.5 rounded-md">
                 Out of Stock
               </span>
             </div>
           )}
         </div>
 
-        {/* ── Content ── */}
+        {/* Content */}
         <div className="p-3 sm:p-4">
           {/* Brand */}
           {product.brand && (
-            <p className="text-[11px] text-neutral-500 uppercase tracking-wider font-medium mb-1">
+            <p className="text-[11px] text-content-tertiary uppercase tracking-wider font-medium mb-1">
               {product.brand}
             </p>
           )}
 
           {/* Title */}
-          <h3 className="text-sm font-medium text-brand-charcoal line-clamp-2 leading-snug mb-2 group-hover:text-brand-blue transition-colors duration-fast min-h-[2.5rem]">
+          <h3 className="text-sm font-medium text-content-primary line-clamp-2 leading-snug mb-2 group-hover:text-content-brand transition-colors duration-fast min-h-[2.5rem]">
             {product.title}
           </h3>
 
@@ -112,10 +114,10 @@ export default function ProductCard({ product, variant = 'standard' }: ProductCa
           {product.reviewCount > 0 && (
             <div className="flex items-center gap-1.5 mb-2">
               <div className="flex items-center gap-0.5">
-                <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                <span className="text-xs font-semibold text-brand-charcoal">{product.rating}</span>
+                <Star className="w-3.5 h-3.5 text-warning" weight="fill" />
+                <span className="text-xs font-semibold text-content-primary">{product.rating}</span>
               </div>
-              <span className="text-xs text-neutral-400">({product.reviewCount})</span>
+              <span className="text-xs text-content-disabled">({product.reviewCount})</span>
             </div>
           )}
 
@@ -128,20 +130,20 @@ export default function ProductCard({ product, variant = 'standard' }: ProductCa
           </div>
           {discount && product.compareAt && (
             <p className="price-save mt-1">
-              Save {formatBDT(product.compareAt - product.price)}
+              FloppyDisk {formatBDT(product.compareAt - product.price)}
             </p>
           )}
 
           {/* Stock / Delivery qualifier */}
           {product.inStock && product.stockQty <= 10 && (
-            <p className="text-xs text-semantic-warning mt-2 font-medium">
+            <p className="text-xs text-warning mt-2 font-medium">
               Only {product.stockQty} left
             </p>
           )}
         </div>
       </Link>
 
-      {/* Wishlist button — independent from card link */}
+      {/* Wishlist button */}
       <button
         className="absolute top-2.5 right-2.5 z-20 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm
                    flex items-center justify-center shadow-sm
@@ -150,7 +152,7 @@ export default function ProductCard({ product, variant = 'standard' }: ProductCa
         aria-label={`Add ${product.title} to wishlist`}
         onClick={(e) => e.stopPropagation()}
       >
-        <Heart className="w-4 h-4 text-neutral-400 group-hover/wish:text-semantic-danger transition-colors" />
+        <Heart className="w-4 h-4 text-content-disabled group-hover/wish:text-danger transition-colors" />
       </button>
     </div>
   );

@@ -2,24 +2,94 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    @apply bg-slate-900 text-slate-100 antialiased;
-  }
-}
+/* ═══════════════════════════════════════════════════════
+   KENAKATA SHOP — Merchant Center
+   Color Tokens v1.0 · Light Theme Only · Montserrat
+   ═══════════════════════════════════════════════════════ */
 
-/* Custom modern scrollbars */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #0f172a;
-}
-::-webkit-scrollbar-thumb {
-  background: #334155;
-  border-radius: 9999px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #475569;
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --k-brand-orange: #ff4d00;
+    --k-brand-charcoal: #212a33;
+    --k-brand-white: #ffffff;
+    --k-orange-50: #fff4ed;
+    --k-orange-100: #ffe5d5;
+    --k-orange-200: #ffc5a6;
+    --k-orange-300: #ff9d70;
+    --k-orange-400: #ff7438;
+    --k-orange-500: #ff4d00;
+    --k-orange-600: #e64400;
+    --k-orange-700: #d63f00;
+    --k-orange-800: #b73500;
+    --k-orange-900: #8f2a00;
+    --k-orange-950: #4a1500;
+    --k-charcoal-50: #f7f8f9;
+    --k-charcoal-100: #eef0f2;
+    --k-charcoal-200: #dde1e5;
+    --k-charcoal-300: #c4cbd1;
+    --k-charcoal-400: #98a3ad;
+    --k-charcoal-500: #6f7c87;
+    --k-charcoal-600: #53606b;
+    --k-charcoal-700: #3d4852;
+    --k-charcoal-800: #2c363f;
+    --k-charcoal-900: #212a33;
+    --k-charcoal-950: #11171c;
+    --color-bg-canvas: var(--k-brand-white);
+    --color-bg-subtle: var(--k-charcoal-50);
+    --color-bg-muted: var(--k-charcoal-100);
+    --color-bg-elevated: var(--k-brand-white);
+    --color-bg-inverse: var(--k-charcoal-900);
+    --color-surface-brand: var(--k-orange-500);
+    --color-surface-brand-subtle: var(--k-orange-50);
+    --color-text-primary: var(--k-charcoal-900);
+    --color-text-secondary: var(--k-charcoal-600);
+    --color-text-tertiary: var(--k-charcoal-500);
+    --color-text-disabled: var(--k-charcoal-400);
+    --color-text-inverse: var(--k-brand-white);
+    --color-text-brand: var(--k-orange-700);
+    --color-icon-primary: var(--k-charcoal-900);
+    --color-icon-secondary: var(--k-charcoal-500);
+    --color-icon-brand: var(--k-orange-500);
+    --color-icon-inverse: var(--k-brand-white);
+    --color-border-default: var(--k-charcoal-200);
+    --color-border-strong: var(--k-charcoal-400);
+    --color-border-brand: var(--k-orange-500);
+    --color-border-focus: #146cc5;
+    --color-action-primary-bg: var(--k-orange-700);
+    --color-action-primary-text: var(--k-brand-white);
+    --color-action-primary-hover: #c83a00;
+    --color-action-primary-pressed: #a83100;
+    --color-action-secondary-bg: var(--k-brand-white);
+    --color-action-secondary-text: var(--k-charcoal-900);
+    --color-action-secondary-border: var(--k-charcoal-300);
+    --color-action-ghost-hover: var(--k-orange-50);
+    --color-action-disabled-bg: var(--k-charcoal-100);
+    --color-action-disabled-text: var(--k-charcoal-400);
+    --color-success: #168a50;
+    --color-success-surface: #eaf7f0;
+    --color-warning: #a85d00;
+    --color-warning-surface: #fff5e5;
+    --color-danger: #c52d2d;
+    --color-danger-surface: #fff0f0;
+    --color-info: #146cc5;
+    --color-info-surface: #edf6ff;
+    --color-selection-bg: var(--k-orange-100);
+    --color-overlay-scrim: rgba(17, 23, 28, 0.56);
+  }
+
+  body {
+    font-family: 'Manrope', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-canvas);
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--k-charcoal-300); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--k-charcoal-500); }
 }

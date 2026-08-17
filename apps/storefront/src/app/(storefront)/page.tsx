@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
-  ChevronRight, ChevronLeft, ArrowRight, Timer, Flame, TrendingUp,
-  Sparkles, Star, ShoppingBag, Zap, Shield, Truck, CreditCard
-} from 'lucide-react';
+  CaretRight, CaretLeft, ArrowRight, Timer, Fire, TrendUp, Sparkle, Star, ShoppingBag, Lightning, ShieldCheck, Truck, CreditCard
+} from '@phosphor-icons/react';
 import ProductCard from '@/components/ProductCard';
 import {
   categories, brands, products, flashDeals, heroBanners,
@@ -38,91 +38,47 @@ function CountdownTimer({ endsAt }: { endsAt: string }) {
         { val: timeLeft.s, label: 's' },
       ].map(({ val, label }) => (
         <div key={label} className="flex items-center gap-0.5">
-          <span className="bg-brand-charcoal text-white text-sm font-bold px-1.5 py-0.5 rounded min-w-[28px] text-center tabular-nums">
+          <span className="bg-surface-inverse text-content-inverse text-sm font-bold px-1.5 py-0.5 rounded min-w-[28px] text-center tabular-nums">
             {String(val).padStart(2, '0')}
           </span>
-          {label !== 's' && <span className="text-brand-charcoal font-bold">:</span>}
+          {label !== 's' && <span className="text-content-primary font-bold">:</span>}
         </div>
       ))}
     </div>
   );
 }
 
-// ── Hero Banner Carousel ──
+// ── Hero Banner ──
 function HeroBanner() {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => setCurrent(c => (c + 1) % heroBanners.length), 6000);
-    return () => clearInterval(id);
-  }, []);
-
-  const banner = heroBanners[current];
-
   return (
     <section className="relative overflow-hidden">
-      <div
-        className={`bg-gradient-to-br ${banner.gradient} text-white transition-all duration-700`}
-        style={{ minHeight: 'clamp(280px, 40vw, 480px)' }}
-      >
-        <div className="container-page h-full flex items-center py-12 md:py-20">
-          <div className="max-w-xl animate-fade-in" key={banner.id}>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
-              {banner.titleEn}
+      <div className="relative w-full" style={{ minHeight: 'clamp(200px, 30vw, 400px)' }}>
+        <Image
+          src="/banner.png"
+          alt="Kenakata - Bangladesh's Trusted Online Storefront"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--k-charcoal-900)]/60 via-transparent to-transparent" />
+        <div className="container-page relative h-full flex items-center py-12 md:py-20">
+          <div className="max-w-xl animate-fade-in">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4 text-white">
+              Your Trusted Storefront
             </h1>
             <p className="text-base sm:text-lg text-white/80 mb-8 leading-relaxed">
-              {banner.subtitleEn}
+              Discover authentic products, fast delivery, and the best prices across Bangladesh.
             </p>
             <Link
-              href={banner.link}
-              className="btn bg-white text-brand-charcoal hover:bg-neutral-100 font-semibold text-base px-8 py-3 rounded-xl
+              href="/categories/electronics"
+              className="btn bg-white text-content-primary hover:bg-white/90 font-semibold text-base px-8 py-3 rounded-xl
                          shadow-lg hover:shadow-xl transition-all duration-normal active:scale-[0.98]"
             >
-              {banner.ctaEn}
-              <ArrowRight className="w-5 h-5 ml-1" />
+              Shop Now
+              <ArrowRight className="w-5 h-5 ml-1" weight="bold" />
             </Link>
           </div>
-          {/* Decorative elements */}
-          <div className="hidden lg:block absolute right-12 top-1/2 -translate-y-1/2">
-            <div className="w-72 h-72 rounded-full bg-white/5 flex items-center justify-center">
-              <div className="w-48 h-48 rounded-full bg-white/5 flex items-center justify-center">
-                <ShoppingBag className="w-20 h-20 text-white/20" />
-              </div>
-            </div>
-          </div>
         </div>
-
-        {/* Indicators */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2">
-          {heroBanners.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`h-1.5 rounded-full transition-all duration-normal ${
-                i === current ? 'w-8 bg-white' : 'w-1.5 bg-white/40 hover:bg-white/60'
-              }`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Navigation arrows */}
-        <button
-          onClick={() => setCurrent(c => (c - 1 + heroBanners.length) % heroBanners.length)}
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm
-                     flex items-center justify-center hover:bg-white/20 transition-colors hidden md:flex"
-          aria-label="Previous slide"
-        >
-          <ChevronLeft className="w-5 h-5 text-white" />
-        </button>
-        <button
-          onClick={() => setCurrent(c => (c + 1) % heroBanners.length)}
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm
-                     flex items-center justify-center hover:bg-white/20 transition-colors hidden md:flex"
-          aria-label="Next slide"
-        >
-          <ChevronRight className="w-5 h-5 text-white" />
-        </button>
       </div>
     </section>
   );
@@ -134,29 +90,27 @@ function SectionHeading({
   title,
   subtitle,
   viewAllHref,
-  accentColor = 'text-brand-blue',
 }: {
   icon: React.ElementType;
   title: string;
   subtitle?: string;
   viewAllHref?: string;
-  accentColor?: string;
 }) {
   return (
     <div className="flex items-end justify-between mb-6 sm:mb-8">
       <div>
         <div className="flex items-center gap-2 mb-1">
-          <Icon className={`w-5 h-5 ${accentColor}`} />
-          <h2 className="text-xl sm:text-2xl font-bold text-brand-charcoal">{title}</h2>
+          <Icon className="w-5 h-5 text-icon-brand" weight="bold" />
+          <h2 className="text-xl sm:text-2xl font-bold text-content-primary">{title}</h2>
         </div>
-        {subtitle && <p className="text-sm text-neutral-500 mt-1">{subtitle}</p>}
+        {subtitle && <p className="text-sm text-content-tertiary mt-1">{subtitle}</p>}
       </div>
       {viewAllHref && (
         <Link
           href={viewAllHref}
-          className="text-sm font-medium text-brand-blue hover:text-brand-blue-hover flex items-center gap-1 transition-colors shrink-0"
+          className="text-sm font-medium text-content-brand hover:underline flex items-center gap-1 transition-colors shrink-0"
         >
-          View All <ChevronRight className="w-4 h-4" />
+          View All <CaretRight className="w-4 h-4" weight="bold" />
         </Link>
       )}
     </div>
@@ -169,21 +123,21 @@ function SectionHeading({
 export default function HomePage() {
   return (
     <div>
-      {/* ── Hero Banner ── */}
+      {/* Hero Banner */}
       <HeroBanner />
 
-      {/* ── Service Promise Bar ── */}
-      <section className="bg-neutral-50 border-b border-neutral-100">
+      {/* Service Promise Bar */}
+      <section className="bg-surface-subtle border-b border-border">
         <div className="container-page py-4">
           <div className="flex items-center justify-center gap-6 sm:gap-12 text-xs sm:text-sm overflow-x-auto no-scrollbar">
             {[
-              { icon: Shield, text: 'Authentic Products' },
+              { icon: ShieldCheck, text: 'Authentic Products' },
               { icon: Truck, text: 'Fast Nationwide Delivery' },
               { icon: CreditCard, text: 'Cash on Delivery' },
-              { icon: Zap, text: 'Easy Returns' },
+              { icon: Lightning, text: 'Easy Returns' },
             ].map(({ icon: Icon, text }) => (
-              <div key={text} className="flex items-center gap-2 text-neutral-600 shrink-0">
-                <Icon className="w-4 h-4 text-brand-blue" />
+              <div key={text} className="flex items-center gap-2 text-content-secondary shrink-0">
+                <Icon className="w-4 h-4 text-icon-brand" weight="bold" />
                 <span className="font-medium whitespace-nowrap">{text}</span>
               </div>
             ))}
@@ -191,9 +145,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Category Shortcuts ── */}
+      {/* Category Shortcuts */}
       <section className="container-page py-8 sm:py-12">
-        <SectionHeading icon={Sparkles} title="Shop by Category" subtitle="Explore our wide range of products" />
+        <SectionHeading icon={Sparkle} title="Shop by Category" subtitle="Explore our wide range of products" />
         <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 gap-3 sm:gap-4">
           {categories.map((cat) => (
             <Link
@@ -201,13 +155,13 @@ export default function HomePage() {
               href={`/categories/${cat.slug}`}
               className="group flex flex-col items-center text-center"
             >
-              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-neutral-50 border border-neutral-100
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-surface-subtle border border-border
                               flex items-center justify-center text-2xl sm:text-3xl
-                              group-hover:bg-brand-blue-soft group-hover:border-brand-blue/20 group-hover:scale-105
+                              group-hover:bg-surface-brand-subtle group-hover:border-border-brand/20 group-hover:scale-105
                               transition-all duration-normal shadow-sm group-hover:shadow-md">
-                {cat.icon}
+                <ShoppingBag className="w-7 h-7 sm:w-8 sm:h-8 text-icon-secondary group-hover:text-icon-brand transition-colors" weight="duotone" />
               </div>
-              <span className="text-xs sm:text-sm font-medium text-neutral-700 mt-2.5 group-hover:text-brand-blue transition-colors line-clamp-2">
+              <span className="text-xs sm:text-sm font-medium text-content-secondary mt-2.5 group-hover:text-content-brand transition-colors line-clamp-2">
                 {cat.name}
               </span>
             </Link>
@@ -215,20 +169,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Flash Deals ── */}
-      <section className="bg-gradient-to-r from-red-50 via-orange-50 to-amber-50 border-y border-neutral-100">
+      {/* Flash Deals */}
+      <section className="bg-surface-brand-subtle border-y border-border">
         <div className="container-page py-8 sm:py-12">
           <div className="flex items-end justify-between mb-6 sm:mb-8">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <Flame className="w-5 h-5 text-semantic-danger" />
-                <h2 className="text-xl sm:text-2xl font-bold text-brand-charcoal">Flash Deals</h2>
+                <Fire className="w-5 h-5 text-danger" weight="fill" />
+                <h2 className="text-xl sm:text-2xl font-bold text-content-primary">Flash Deals</h2>
               </div>
-              <p className="text-sm text-neutral-500 mt-1">Hurry! Limited time offers</p>
+              <p className="text-sm text-content-tertiary mt-1">Hurry! Limited time offers</p>
             </div>
             <div className="flex items-center gap-3 shrink-0">
-              <div className="flex items-center gap-1.5 text-sm text-neutral-600">
-                <Timer className="w-4 h-4" />
+              <div className="flex items-center gap-1.5 text-sm text-content-secondary">
+                <Timer className="w-4 h-4" weight="bold" />
                 <span className="hidden sm:inline font-medium">Ends in:</span>
               </div>
               <CountdownTimer endsAt={flashDeals[0]?.flashEndsAt || ''} />
@@ -236,7 +190,7 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5">
             {flashDeals.map((deal) => (
-              <Link key={deal.id} href={`/products/${deal.slug}`} className="card group bg-white">
+              <Link key={deal.id} href={`/products/${deal.slug}`} className="card group bg-canvas">
                 <div className="relative aspect-square overflow-hidden">
                   <div className="absolute inset-0 product-image-placeholder">
                     <div
@@ -246,7 +200,7 @@ export default function HomePage() {
                       }}
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <ShoppingBag className="w-10 h-10 text-neutral-300/60" />
+                      <ShoppingBag className="w-10 h-10 text-content-disabled opacity-60" />
                     </div>
                   </div>
                   <span className="absolute top-2 left-2 badge-red font-semibold">
@@ -254,22 +208,22 @@ export default function HomePage() {
                   </span>
                 </div>
                 <div className="p-3 sm:p-4">
-                  <h3 className="text-sm font-medium line-clamp-2 group-hover:text-brand-blue transition-colors min-h-[2.5rem]">
+                  <h3 className="text-sm font-medium line-clamp-2 group-hover:text-content-brand transition-colors min-h-[2.5rem]">
                     {deal.title}
                   </h3>
                   <div className="flex items-baseline gap-2 mt-2">
-                    <span className="price-current text-base text-semantic-danger">{formatBDT(deal.flashPrice)}</span>
+                    <span className="price-current text-base text-danger">{formatBDT(deal.flashPrice)}</span>
                     <span className="price-original text-xs">{formatBDT(deal.price)}</span>
                   </div>
                   {/* Progress bar */}
                   <div className="mt-3">
-                    <div className="flex justify-between text-[10px] text-neutral-500 mb-1">
+                    <div className="flex justify-between text-[10px] text-content-tertiary mb-1">
                       <span>{deal.claimed} sold</span>
                       <span>{deal.total - deal.claimed} left</span>
                     </div>
-                    <div className="h-1.5 bg-neutral-100 rounded-full overflow-hidden">
+                    <div className="h-1.5 bg-surface-muted rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r from-semantic-danger to-orange-400 rounded-full transition-all duration-slow"
+                        className="h-full bg-gradient-to-r from-danger to-[var(--k-orange-400)] rounded-full transition-all duration-slow"
                         style={{ width: `${(deal.claimed / deal.total) * 100}%` }}
                       />
                     </div>
@@ -281,7 +235,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Featured Products ── */}
+      {/* Featured Products */}
       <section className="container-page py-8 sm:py-12">
         <SectionHeading
           icon={Star}
@@ -296,10 +250,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Brands Spotlight ── */}
-      <section className="bg-neutral-50 border-y border-neutral-100">
+      {/* Brands Spotlight */}
+      <section className="bg-surface-subtle border-y border-border">
         <div className="container-page py-8 sm:py-12">
-          <SectionHeading icon={Sparkles} title="Featured Brands" subtitle="Shop from trusted brands" />
+          <SectionHeading icon={Sparkle} title="Featured Brands" subtitle="Shop from trusted brands" />
           <div className="grid grid-cols-4 md:grid-cols-8 gap-3 sm:gap-4">
             {brands.map((brand) => (
               <Link
@@ -308,9 +262,9 @@ export default function HomePage() {
                 className="group flex flex-col items-center"
               >
                 <div
-                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl border border-neutral-200 bg-white
+                  className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl border border-border bg-canvas
                               flex items-center justify-center
-                              group-hover:border-brand-blue/30 group-hover:shadow-md group-hover:scale-105
+                              group-hover:border-border-brand/30 group-hover:shadow-md group-hover:scale-105
                               transition-all duration-normal"
                 >
                   <span
@@ -320,7 +274,7 @@ export default function HomePage() {
                     {brand.name.substring(0, 2).toUpperCase()}
                   </span>
                 </div>
-                <span className="text-xs sm:text-sm font-medium text-neutral-700 mt-2 group-hover:text-brand-blue transition-colors">
+                <span className="text-xs sm:text-sm font-medium text-content-secondary mt-2 group-hover:text-content-brand transition-colors">
                   {brand.name}
                 </span>
               </Link>
@@ -329,10 +283,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── New Arrivals ── */}
+      {/* New Arrivals */}
       <section className="container-page py-8 sm:py-12">
         <SectionHeading
-          icon={Zap}
+          icon={Lightning}
           title="New Arrivals"
           subtitle="Fresh products just landed"
           viewAllHref="/search?sort=newest"
@@ -344,15 +298,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Best Sellers ── */}
-      <section className="bg-neutral-50 border-y border-neutral-100">
+      {/* Best Sellers */}
+      <section className="bg-surface-subtle border-y border-border">
         <div className="container-page py-8 sm:py-12">
           <SectionHeading
-            icon={TrendingUp}
+            icon={TrendUp}
             title="Best Sellers"
             subtitle="Most loved by our customers"
             viewAllHref="/search?sort=popularity"
-            accentColor="text-semantic-success"
           />
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-5">
             {getBestSellers().map((product) => (
@@ -362,7 +315,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── All Products ── */}
+      {/* All Products */}
       <section className="container-page py-8 sm:py-12">
         <SectionHeading
           icon={ShoppingBag}
@@ -377,19 +330,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Newsletter / CTA ── */}
-      <section className="bg-brand-charcoal text-white">
+      {/* Newsletter / CTA */}
+      <section className="bg-surface-inverse text-content-inverse">
         <div className="container-page py-12 sm:py-16 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold mb-3">Stay Connected with Kenakata</h2>
-          <p className="text-neutral-400 max-w-md mx-auto mb-8">
+          <p className="text-white/50 max-w-md mx-auto mb-8">
             Get exclusive deals, new arrivals, and special offers delivered to your inbox.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
             <input
               type="email"
               placeholder="Enter your email or phone"
-              className="flex-1 px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-neutral-400
-                         focus:bg-white/15 focus:border-brand-blue focus:ring-0 transition-all text-sm"
+              className="flex-1 px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-white/40
+                         focus:bg-white/15 focus:border-[var(--k-orange-500)] focus:ring-0 transition-all text-sm"
             />
             <button className="btn-primary rounded-xl px-8 shrink-0">
               Subscribe

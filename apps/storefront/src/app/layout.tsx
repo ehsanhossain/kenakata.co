@@ -4,7 +4,7 @@ import { Providers } from '../components/Providers';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Kenakata — কেনাকাটা | Bangladesh\'s Trusted Online Store',
+    default: 'Kenakata — কেনাকাটা | Bangladesh\'s Trusted Online Storefront',
     template: '%s | Kenakata',
   },
   description: 'Find it quickly, understand exactly what you are buying, pay your way, and always know what happens next. Bangladesh\'s trusted multi-category online store.',
@@ -27,7 +27,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#232A31',
+  themeColor: '#FFFFFF',
 };
 
 export default function RootLayout({
@@ -37,7 +37,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen bg-white text-brand-charcoal antialiased">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="min-h-screen bg-canvas text-content-primary antialiased">
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

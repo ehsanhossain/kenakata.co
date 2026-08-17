@@ -83,7 +83,7 @@ export const categories: Category[] = [
     children: [
       { id: 'cat-1-1', slug: 'smartphones', name: 'Smartphones', nameBn: 'স্মার্টফোন', parentId: 'cat-1', icon: '📱', productCount: 128 },
       { id: 'cat-1-2', slug: 'laptops', name: 'Laptops', nameBn: 'ল্যাপটপ', parentId: 'cat-1', icon: '💻', productCount: 89 },
-      { id: 'cat-1-3', slug: 'headphones', name: 'Headphones', nameBn: 'হেডফোন', parentId: 'cat-1', icon: '🎧', productCount: 64 },
+      { id: 'cat-1-3', slug: 'headphones', name: 'Headset', nameBn: 'হেডফোন', parentId: 'cat-1', icon: '🎧', productCount: 64 },
       { id: 'cat-1-4', slug: 'tablets', name: 'Tablets', nameBn: 'ট্যাবলেট', parentId: 'cat-1', icon: '📟', productCount: 45 },
       { id: 'cat-1-5', slug: 'cameras', name: 'Cameras', nameBn: 'ক্যামেরা', parentId: 'cat-1', icon: '📷', productCount: 16 },
     ],
@@ -98,7 +98,7 @@ export const categories: Category[] = [
     ],
   },
   {
-    id: 'cat-3', slug: 'home-living', name: 'Home & Living', nameBn: 'হোম ও লিভিং',
+    id: 'cat-3', slug: 'home-living', name: 'House & Living', nameBn: 'হোম ও লিভিং',
     parentId: null, icon: '🏠', productCount: 230,
     children: [
       { id: 'cat-3-1', slug: 'furniture', name: 'Furniture', nameBn: 'আসবাবপত্র', parentId: 'cat-3', icon: '🪑', productCount: 78 },
@@ -180,9 +180,9 @@ export const products: Product[] = [
     warranty: '1 Year Official Warranty', returnPolicy: '7 Days Return', weight: 187,
   },
   {
-    id: 'prod-3', slug: 'sony-wh-1000xm5-headphones', title: 'Sony WH-1000XM5 Wireless Headphones',
+    id: 'prod-3', slug: 'sony-wh-1000xm5-headphones', title: 'Sony WH-1000XM5 Wireless Headset',
     titleBn: 'সনি WH-1000XM5 ওয়্যারলেস হেডফোন', brand: 'Sony', brandSlug: 'sony',
-    categoryId: 'cat-1-3', categorySlug: 'headphones', categoryName: 'Headphones', categoryNameBn: 'হেডফোন',
+    categoryId: 'cat-1-3', categorySlug: 'headphones', categoryName: 'Headset', categoryNameBn: 'হেডফোন',
     price: 3500000, compareAt: 3999900, rating: 4.8, reviewCount: 312, inStock: true, stockQty: 18,
     sku: 'WH1000XM5-B', tags: ['ANC', 'Wireless', 'Premium'], isFeatured: true, isNew: false, isBestSeller: true, colorHue: 0,
     variants: [
@@ -226,8 +226,8 @@ export const products: Product[] = [
     ],
     highlights: ['15.6" FHD IPS Display', 'Intel Core i5-1335U', '512GB NVMe SSD', 'Lightweight at 1.75kg'],
     highlightsBn: ['১৫.৬" FHD IPS ডিসপ্লে', 'Intel Core i5-1335U', '৫১২জিবি NVMe SSD', 'হালকা ১.৭৫কেজি'],
-    specifications: { 'Display': '15.6" FHD IPS, 250 nits', 'Processor': 'Intel Core i5-1335U', 'RAM': '8GB DDR4', 'Storage': '512GB PCIe NVMe', 'Graphics': 'Intel Iris Xe', 'Battery': 'Up to 8 hours', 'OS': 'Windows 11 Home', 'Weight': '1.75kg' },
-    specificationsBn: { 'ডিসপ্লে': '১৫.৬" FHD IPS, ২৫০ নিট', 'প্রসেসর': 'Intel Core i5-1335U', 'র‍্যাম': '৮জিবি DDR4', 'স্টোরেজ': '৫১২জিবি PCIe NVMe', 'গ্রাফিক্স': 'Intel Iris Xe', 'ব্যাটারি': '৮ ঘণ্টা পর্যন্ত', 'ওএস': 'Windows 11 Home', 'ওজন': '১.৭৫কেজি' },
+    specifications: { 'Display': '15.6" FHD IPS, 250 nits', 'Processor': 'Intel Core i5-1335U', 'RAM': '8GB DDR4', 'Storage': '512GB PCIe NVMe', 'Graphics': 'Intel Iris Xe', 'Battery': 'Up to 8 hours', 'OS': 'Windows 11 House', 'Weight': '1.75kg' },
+    specificationsBn: { 'ডিসপ্লে': '১৫.৬" FHD IPS, ২৫০ নিট', 'প্রসেসর': 'Intel Core i5-1335U', 'র‍্যাম': '৮জিবি DDR4', 'স্টোরেজ': '৫১২জিবি PCIe NVMe', 'গ্রাফিক্স': 'Intel Iris Xe', 'ব্যাটারি': '৮ ঘণ্টা পর্যন্ত', 'ওএস': 'Windows 11 House', 'ওজন': '১.৭৫কেজি' },
     description: 'The HP Pavilion 15 combines a powerful Intel 13th Gen Core i5 processor with a vibrant FHD IPS display and a fast 512GB NVMe SSD.',
     descriptionBn: 'HP Pavilion 15 শক্তিশালী Intel 13th Gen Core i5 প্রসেসর, প্রাণবন্ত FHD IPS ডিসপ্লে এবং দ্রুত 512GB NVMe SSD এর সমন্বয় করে।',
     warranty: '2 Years Official Warranty', returnPolicy: '14 Days Return', weight: 1750,
@@ -254,7 +254,7 @@ export const products: Product[] = [
   {
     id: 'prod-7', slug: 'apple-airpods-pro-2', title: 'Apple AirPods Pro 2nd Gen USB-C',
     titleBn: 'অ্যাপল এয়ারপডস প্রো ২য় জেন USB-C', brand: 'Apple', brandSlug: 'apple',
-    categoryId: 'cat-1-3', categorySlug: 'headphones', categoryName: 'Headphones', categoryNameBn: 'হেডফোন',
+    categoryId: 'cat-1-3', categorySlug: 'headphones', categoryName: 'Headset', categoryNameBn: 'হেডফোন',
     price: 2899900, compareAt: null, rating: 4.7, reviewCount: 445, inStock: true, stockQty: 25,
     sku: 'APP-APP2-USC', tags: ['ANC', 'Wireless', 'Apple'], isFeatured: false, isNew: false, isBestSeller: true, colorHue: 0,
     variants: [],

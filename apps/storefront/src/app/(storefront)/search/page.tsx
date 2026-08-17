@@ -36,7 +36,7 @@ function SearchContent() {
  {query ? (
  <>
  <h1 className="text-xl font-semibold text-content-primary mb-1">
- MagnifyingGlass results for &ldquo;{query}&rdquo;
+ Search results for &ldquo;{query}&rdquo;
  </h1>
  <p className="text-sm text-content-tertiary mb-6">{results.length} products found</p>
 

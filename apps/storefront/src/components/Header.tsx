@@ -250,28 +250,90 @@ export default function Header() {
       {/* Desktop Category Navigation */}
       <nav className="hidden lg:block border-t border-border bg-canvas">
         <div className="container-page">
-          <ul className="flex items-center gap-0.5 h-11 -mx-2">
+          <ul className="flex items-center gap-1 h-11 -mx-2 overflow-x-auto no-scrollbar">
             <li>
               <button
-                className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-content-primary hover:text-content-brand hover:bg-surface-brand-subtle rounded-md transition-all duration-fast"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-content-primary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all duration-fast"
                 onMouseEnter={() => setIsMegaMenuOpen(true)}
                 onMouseLeave={() => setIsMegaMenuOpen(false)}
               >
                 <List className="w-4 h-4" weight="bold" />
                 All Categories
-                <CaretDown className={`w-3.5 h-3.5 transition-transform duration-fast ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
+                <CaretDown className={`w-3 h-3 transition-transform duration-fast ${isMegaMenuOpen ? 'rotate-180' : ''}`} />
               </button>
             </li>
-            {categories.slice(0, 6).map((cat) => (
-              <li key={cat.id}>
-                <Link
-                  href={`/categories/${cat.slug}`}
-                  className="flex items-center gap-1.5 px-3 py-2 text-sm text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-md transition-all duration-fast"
-                >
-                  {cat.name}
-                </Link>
-              </li>
-            ))}
+            <li>
+              <Link
+                href="/categories/gadgets"
+                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+              >
+                ⚡ Gadgets
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/categories/camera"
+                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+              >
+                📹 Cameras
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/categories/earbuds"
+                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+              >
+                🎧 Earbuds & Audio
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/categories/mobile-accessories"
+                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+              >
+                🔌 Mobile Accessories
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/categories/speaker"
+                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+              >
+                🔊 Bluetooth Speakers
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/categories/fan"
+                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+              >
+                🌀 Cooling Fans
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/categories/light"
+                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+              >
+                💡 Smart Lights
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/categories/home-appliance"
+                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+              >
+                🏠 Home Living
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/categories/bed-sheets"
+                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+              >
+                🛏️ 3D Bed Sheets
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>

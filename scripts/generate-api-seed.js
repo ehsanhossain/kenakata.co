@@ -1,8 +1,25 @@
 const fs = require('fs');
 const path = require('path');
-
 const catalogJsonPath = path.join(__dirname, '..', 'data', 'resellerhub-catalog.json');
-const products = JSON.parse(fs.readFileSync(catalogJsonPath, 'utf8'));
+
+function deepSanitize(obj) {
+  if (typeof obj === 'string') {
+    return obj.toWellFormed().replace(/[\uD800-\uDFFF]/g, '').trim();
+  }
+  if (Array.isArray(obj)) {
+    return obj.map(deepSanitize);
+  }
+  if (obj && typeof obj === 'object') {
+    const res = {};
+    for (const [k, v] of Object.entries(obj)) {
+      res[k] = deepSanitize(v);
+    }
+    return res;
+  }
+  return obj;
+}
+
+const products = deepSanitize(JSON.parse(fs.readFileSync(catalogJsonPath, 'utf8')));
 
 // Extract brands
 const brandSet = new Map();

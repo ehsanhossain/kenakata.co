@@ -130,6 +130,11 @@ let usedSlugs = new Set();
 let usedSkus = new Set();
 let copiedImagesCount = 0;
 
+function cleanString(str) {
+  if (typeof str !== 'string') return str;
+  return str.toWellFormed().replace(/[\uD800-\uDFFF]/g, '').trim();
+}
+
 rawProducts.forEach((item, index) => {
   const mainMeta = categoryMeta[item.mainCategory] || { slug: slugify(item.mainCategory), en: item.mainCategory, bn: item.mainCategory };
   const subMeta = (categoryMeta[item.mainCategory]?.subcategories?.[item.subCategory]) || {

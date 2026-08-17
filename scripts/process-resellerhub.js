@@ -75,7 +75,7 @@ const brandLookup = [
   { name: 'JYSUPER', match: /\bjysuper\b/i, slug: 'jysuper' },
   { name: 'MiLi', match: /\bmili\b/i, slug: 'mili' },
   { name: 'V380', match: /\bv380\b/i, slug: 'v380' },
-  { name: 'ResellerHub Premium', match: /.*/, slug: 'resellerhub' }
+  { name: 'Kenakata Choice', match: /.*/, slug: 'kenakata-choice' }
 ];
 
 function detectBrand(title, text) {
@@ -85,7 +85,7 @@ function detectBrand(title, text) {
       return { name: b.name, slug: b.slug };
     }
   }
-  return { name: 'ResellerHub BD', slug: 'resellerhub' };
+  return { name: 'Kenakata Choice', slug: 'kenakata-choice' };
 }
 
 function scanFolder(dir, categoryPath = []) {
@@ -330,8 +330,8 @@ rawProducts.forEach((item, index) => {
     colorHue: (index * 47) % 360,
     images: webImages.length > 0 ? webImages : ['/banner.png'],
     merchant: {
-      name: 'ResellerHub BD',
-      slug: 'resellerhubbd',
+      name: 'Verified Merchant',
+      slug: 'verified-merchant',
       isVerified: true
     }
   });

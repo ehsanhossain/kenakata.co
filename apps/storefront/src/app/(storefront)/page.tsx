@@ -71,7 +71,7 @@ function HeroBanner() {
           <div className="max-w-xl animate-fade-in space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold">
               <ShieldCheck className="w-4 h-4 text-emerald-400" weight="fill" />
-              Verified Merchant • ResellerHub BD
+              100% Genuine & Verified Products
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-white tracking-tight">
               Premium Gadgets & Home Living
@@ -153,7 +153,7 @@ export default function HomePage() {
         <div className="container-page py-3.5">
           <div className="flex items-center justify-between gap-6 sm:gap-12 text-xs sm:text-sm overflow-x-auto no-scrollbar">
             {[
-              { icon: ShieldCheck, text: 'Verified Merchant (ResellerHub BD)', highlight: true },
+              { icon: ShieldCheck, text: '100% Genuine & Verified Products', highlight: true },
               { icon: Truck, text: 'Fast Nationwide Delivery' },
               { icon: CreditCard, text: 'Cash on Delivery Available' },
               { icon: Lightning, text: '7 Days Return Guarantee' },
@@ -301,7 +301,7 @@ export default function HomePage() {
         <SectionHeading
           icon={ShoppingBag}
           title="All Products"
-          subtitle="Explore the complete ResellerHub BD catalog"
+          subtitle="Explore our curated collection of verified gadgets & home essentials"
           viewAllHref="/search"
         />
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-5">
@@ -310,7 +310,7 @@ export default function HomePage() {
           ))}
         </div>
         {products.length > 20 && (
-          <div className="text-center mt-8">
+           <div className="text-center mt-8">
             <Link
               href="/search"
               className="btn-primary px-8 py-3 rounded-xl font-bold inline-flex items-center gap-2"
@@ -322,16 +322,16 @@ export default function HomePage() {
         )}
       </section>
 
-      {/* Verified Merchant Banner */}
+      {/* Quality Assurance Banner */}
       <section className="bg-emerald-900 text-white">
         <div className="container-page py-12 sm:py-16 text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-800 text-emerald-200 text-xs font-semibold">
             <ShieldCheck className="w-4 h-4 text-emerald-400" weight="fill" />
-            Official Merchant Verification
+            Kenakata Quality Promise
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold">Supplied by ResellerHub BD</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold">100% Authentic Quality Guarantee</h2>
           <p className="text-emerald-100/80 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-            All products are verified, authentic, and backed by manufacturer warranty. Enjoy fast delivery across Bangladesh and hassle-free returns.
+            Every item in our collection is rigorously verified, brand original, and backed by warranty. Enjoy fast delivery across Bangladesh and hassle-free returns.
           </p>
           <div className="pt-2">
             <Link

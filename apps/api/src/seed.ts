@@ -109,9 +109,9 @@ const brandsData = [
     "bn": "Apple"
   },
   {
-    "slug": "resellerhub",
-    "en": "ResellerHub Premium",
-    "bn": "ResellerHub Premium"
+    "slug": "kenakata-choice",
+    "en": "Kenakata Choice",
+    "bn": "Kenakata Choice"
   },
   {
     "slug": "jysuper",
@@ -280,8 +280,8 @@ const rawProducts = [
       "/uploads/products/camera/1/product_1780989286_1346.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -359,8 +359,8 @@ const rawProducts = [
       "/uploads/products/camera/2/product_1780818030_6768-4.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -438,8 +438,8 @@ const rawProducts = [
       "/uploads/products/camera/3/product_1780818030_6768-3.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -517,8 +517,8 @@ const rawProducts = [
       "/uploads/products/camera/4/product_1780818030_6768-2-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -596,8 +596,8 @@ const rawProducts = [
       "/uploads/products/camera/5/product_1780818030_6768-1.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -675,8 +675,8 @@ const rawProducts = [
       "/uploads/products/camera/6/product_1780818030_6768.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -764,8 +764,8 @@ const rawProducts = [
       "/uploads/products/earbuds/1/WhatsApp-Image-2026-06-03-at-4.21.48-AM-683x1024.jpeg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -851,8 +851,8 @@ const rawProducts = [
       "/uploads/products/earbuds/2/WhatsApp-Image-2026-06-03-at-4.20.55-AM-768x1024.jpeg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -935,8 +935,8 @@ const rawProducts = [
       "/uploads/products/earbuds/3/WhatsApp-Image-2026-06-03-at-4.24.58-AM-1024x1024.jpeg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -945,8 +945,8 @@ const rawProducts = [
     "slug": "stacking-blocks-rgb-color-led-night-light",
     "title": "Stacking Blocks RGB Color LED Night Light",
     "titleBn": "Stacking Blocks RGB Color LED Night Light",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -964,7 +964,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "electronics",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -1016,8 +1016,8 @@ const rawProducts = [
       "/uploads/products/electronics/1/gwXitPaR3S7A9d9PZbWg7dB9cY4ARWMJN6wq825A-1024x1024.png"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -1026,8 +1026,8 @@ const rawProducts = [
     "slug": "3d-led-digital-wall-table-clock",
     "title": "3D LED Digital Wall & Table Clock",
     "titleBn": "3D LED Digital Wall & Table Clock",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -1045,7 +1045,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "electronics",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -1098,8 +1098,8 @@ const rawProducts = [
       "/uploads/products/electronics/2/Sf6282a606c2d48bb81514da12697d04et-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -1108,8 +1108,8 @@ const rawProducts = [
     "slug": "smart-water-bottle-premium-leather-wrapped-hip-flask",
     "title": "Smart Water Bottle – Premium Leather Wrapped Hip Flask",
     "titleBn": "Smart Water Bottle – Premium Leather Wrapped Hip Flask",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -1127,7 +1127,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "electronics",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -1183,8 +1183,8 @@ const rawProducts = [
       "/uploads/products/electronics/3/z7n4uz92lZUHX5gLLCKOIKXmGU2lUVV8kUrTwjXD-931x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -1193,8 +1193,8 @@ const rawProducts = [
     "slug": "new-sensory-shoulder-and-neck-massager",
     "title": "New Sensory Shoulder And Neck Massager",
     "titleBn": "New Sensory Shoulder And Neck Massager",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -1212,7 +1212,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "electronics",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -1268,8 +1268,8 @@ const rawProducts = [
       "/uploads/products/electronics/4/z302zLJOleeAt5kSebClPZnLh74AKIYUdDHwxlPS.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -1278,8 +1278,8 @@ const rawProducts = [
     "slug": "magic-handwriting-practice-book-for-kids-5-pcs-set",
     "title": "Magic Handwriting Practice Book For kids 5 PCS Set",
     "titleBn": "Magic Handwriting Practice Book For kids 5 PCS Set",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -1297,7 +1297,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "electronics",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -1350,8 +1350,8 @@ const rawProducts = [
       "/uploads/products/electronics/5/sXdch4VGFvzeB2xrudQ7VHayNoeLsYjQaw6lbX7D-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -1360,8 +1360,8 @@ const rawProducts = [
     "slug": "mk500-5-in-1-mobile-game-combo-pack",
     "title": "MK500 5-in-1 Mobile Game Combo Pack",
     "titleBn": "MK500 5-in-1 Mobile Game Combo Pack",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -1379,7 +1379,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "electronics",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -1459,8 +1459,8 @@ const rawProducts = [
       "/uploads/products/electronics/6/product_1782742948_5521.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -1469,8 +1469,8 @@ const rawProducts = [
     "slug": "period-pain-relief-waist-belt-heating-pad-device",
     "title": "Period Pain Relief Waist Belt Heating Pad Device",
     "titleBn": "Period Pain Relief Waist Belt Heating Pad Device",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -1488,7 +1488,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "electronics",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -1542,8 +1542,8 @@ const rawProducts = [
       "/uploads/products/electronics/7/product_1764232857_8737.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -1626,8 +1626,8 @@ const rawProducts = [
       "/uploads/products/electronics/8/WeXvoQySJQEyneg5SI1BVPSmtVPKZRJCJmrjawjc.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -1708,8 +1708,8 @@ const rawProducts = [
       "/uploads/products/fan/1/nYUam6KFMO6XVNKbCOEei5db00ghQ6QNSwOKa8Zg-1.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -1718,8 +1718,8 @@ const rawProducts = [
     "slug": "x05-handheld-high-speed-turbo-cooling-fan-3000mah-battery",
     "title": "X05 Handheld High-Speed Turbo Cooling Fan 3000mAh Battery",
     "titleBn": "X05 Handheld High-Speed Turbo Cooling Fan 3000mAh Battery",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -1737,7 +1737,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "fan",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -1793,8 +1793,8 @@ const rawProducts = [
       "/uploads/products/fan/2/OIP-1.webp"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -1803,8 +1803,8 @@ const rawProducts = [
     "slug": "high-speed-fan-model-jgf009",
     "title": "HIGH SPEED FAN ( MODEL - JGF009 )",
     "titleBn": "HIGH SPEED FAN ( MODEL - JGF009 )",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -1822,7 +1822,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "fan",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -1875,8 +1875,8 @@ const rawProducts = [
       "/uploads/products/fan/3/product_1783153207_6198.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -1885,8 +1885,8 @@ const rawProducts = [
     "slug": "foldable-powerful-winds-turbo-fan-multy-color-black",
     "title": "Foldable Powerful Winds Turbo Fan - Multy Color - Black",
     "titleBn": "Foldable Powerful Winds Turbo Fan - Multy Color - Black",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -1904,7 +1904,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "fan",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -1967,8 +1967,8 @@ const rawProducts = [
       "/uploads/products/fan/4/WhatsApp-Image-2026-05-18-at-12.34.05-AM.jpeg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -1977,8 +1977,8 @@ const rawProducts = [
     "slug": "16-colors-plug-in-usb-galaxy-night-light-ocean-wave-with-remote-control",
     "title": "16 Colors Plug-In USB Galaxy Night Light Ocean Wave with Remote Control",
     "titleBn": "16 Colors Plug-In USB Galaxy Night Light Ocean Wave with Remote Control",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -1996,7 +1996,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "light",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -2050,8 +2050,8 @@ const rawProducts = [
       "/uploads/products/light/1/cd847040-f3f9-41ea-9253-5dbe99488ff0-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -2060,8 +2060,8 @@ const rawProducts = [
     "slug": "led-neon-rgb-magic-flexible-strip-light-with-app-control",
     "title": "LED Neon RGB Magic Flexible Strip Light With App control",
     "titleBn": "LED Neon RGB Magic Flexible Strip Light With App control",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -2079,7 +2079,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "light",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -2134,8 +2134,8 @@ const rawProducts = [
       "/uploads/products/light/2/OGuPLH9KzdwP2CYjGbnYFY1j9f5rfua7ZGm28nz3.webp"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -2144,8 +2144,8 @@ const rawProducts = [
     "slug": "lighting-us-plug-flower-vase-led-mushroom-night-light-mushroom-light-led-mushroom-light",
     "title": "Lighting US Plug Flower Vase LED Mushroom Night Light mushroom light led mushroom light",
     "titleBn": "Lighting US Plug Flower Vase LED Mushroom Night Light mushroom light led mushroom light",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -2163,7 +2163,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "light",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -2224,8 +2224,8 @@ const rawProducts = [
       "/uploads/products/light/3/d8970841918d45c192722130f39f7e77.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -2234,8 +2234,8 @@ const rawProducts = [
     "slug": "sensor-night-light-automatic-on-off-sensor-lights-plug-into-wall-stair-lamp-for-stairway-bathroom-room-garage-cabinet-bedroom",
     "title": "Sensor Night Light Automatic on Off Sensor Lights Plug Into Wall Stair Lamp for Stairway Bathroom Room Garage Cabinet Bedroom",
     "titleBn": "Sensor Night Light Automatic on Off Sensor Lights Plug Into Wall Stair Lamp for Stairway Bathroom Room Garage Cabinet Bedroom",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -2253,7 +2253,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "light",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -2315,8 +2315,8 @@ const rawProducts = [
       "/uploads/products/light/4/f9e1389c8b5464c422a954fb2d50a521.png"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -2325,8 +2325,8 @@ const rawProducts = [
     "slug": "outdoor-solar-wall-lamp-wall-light-villa-lighting-night-light",
     "title": "Outdoor Solar Wall Lamp Wall Light Villa Lighting Night Light",
     "titleBn": "Outdoor Solar Wall Lamp Wall Light Villa Lighting Night Light",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -2344,7 +2344,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "light",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -2399,8 +2399,8 @@ const rawProducts = [
       "/uploads/products/light/5/lIbJKasrkW3KCCO7opCr06xveztE6DKgOeehghMb.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -2486,8 +2486,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/1/QrTUDFto325uARuh6GjrFG6z4i6LJmvURmWJwKuO.png"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -2567,8 +2567,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/10/product_1782805166_2305.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -2649,8 +2649,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/11/product_1782805361_9247.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -2733,8 +2733,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/12/product_1782800972_5913.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -2826,8 +2826,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/13/product_1782801098_3187-825x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -2909,8 +2909,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/14/Untitled-design-15-600x600.jpg.webp"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -2992,8 +2992,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/15/product_1782802918_9105-768x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -3085,8 +3085,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/16/product_1782803463_2026.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -3095,8 +3095,8 @@ const rawProducts = [
     "slug": "dy31-semiconductor-mobile-phone-radiator",
     "title": "DY31 Semiconductor Mobile Phone Radiator",
     "titleBn": "DY31 Semiconductor Mobile Phone Radiator",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -3114,7 +3114,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "mobile-accessories",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -3170,8 +3170,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/17/product_1782803732_4960.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -3180,8 +3180,8 @@ const rawProducts = [
     "slug": "dy28-semiconductor-phone-cooler",
     "title": "DY28 Semiconductor Phone Cooler",
     "titleBn": "DY28 Semiconductor Phone Cooler",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -3199,7 +3199,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "mobile-accessories",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -3251,8 +3251,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/18/R.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -3261,8 +3261,8 @@ const rawProducts = [
     "slug": "tl07-mobile-phone-icing-cooler",
     "title": "TL07 Mobile Phone Icing Cooler",
     "titleBn": "TL07 Mobile Phone Icing Cooler",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -3280,7 +3280,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "mobile-accessories",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -3332,8 +3332,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/19/product_1782804913_4101-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -3419,8 +3419,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/2/x1K8McFIjAF3kBjzYyd8gQaoxQqIiufwq4zTd1k0-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -3504,8 +3504,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/20/thumbnail_1780767322_2807.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -3514,8 +3514,8 @@ const rawProducts = [
     "slug": "sx21-wireless-microphone-type-c",
     "title": "SX21 Wireless Microphone Type c",
     "titleBn": "SX21 Wireless Microphone Type c",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -3533,7 +3533,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "mobile-accessories",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -3588,8 +3588,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/21/thumbnail_1780767322_2807.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -3670,8 +3670,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/22/product_1782463496_5687.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -3680,8 +3680,8 @@ const rawProducts = [
     "slug": "usb-c-auto-eject-charging-adapter-silver",
     "title": "USB-C Auto Eject Charging Adapter, Silver",
     "titleBn": "USB-C Auto Eject Charging Adapter, Silver",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -3699,7 +3699,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "mobile-accessories",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -3757,8 +3757,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/23/WhatsApp-Image-2026-06-14-at-9.36.41-AM.jpeg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -3767,8 +3767,8 @@ const rawProducts = [
     "slug": "mobile-accessories-24",
     "title": "চার্জিং নিয়ে চিন্তা শেষ! এই একটি ডিভাইসেই চার্জ করুন আপনার সব গ্যাজেট।",
     "titleBn": "চার্জিং নিয়ে চিন্তা শেষ! এই একটি ডিভাইসেই চার্জ করুন আপনার সব গ্যাজেট।",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -3786,7 +3786,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "mobile-accessories",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -3840,8 +3840,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/24/qqe5yBhDLgTQq7pZYZa6soLcGOv48k8jH4S0zZe2-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -3850,8 +3850,8 @@ const rawProducts = [
     "slug": "160w-super-fast-multi-port-gan-charger-with-6-in-1-power-delivery-type-c-cable",
     "title": "160W Super Fast Multi-Port GaN Charger with 6-in-1 Power Delivery & Type-C Cable",
     "titleBn": "160W Super Fast Multi-Port GaN Charger with 6-in-1 Power Delivery & Type-C Cable",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -3869,7 +3869,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "mobile-accessories",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -3924,8 +3924,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/25/PAeunhDKIKJ4z5XyH9vNIBS40b3VBRPCmwAKatYd.png"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -4005,8 +4005,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/3/yQVTwBhmBcx44tZPE5G9imjsKB7JV6dv3TVsTo6G.webp"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -4090,8 +4090,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/4/S4RsnyeRkxJc0yc1ZeXkrNh2SqBnln23weQfH9Kp-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -4100,8 +4100,8 @@ const rawProducts = [
     "slug": "mk500-5-in-1-mobile-game-combo-pack-1",
     "title": "MK500 5-in-1 Mobile Game Combo Pack",
     "titleBn": "MK500 5-in-1 Mobile Game Combo Pack",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -4119,7 +4119,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "mobile-accessories",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -4199,8 +4199,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/5/product_1782742948_5521.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -4281,8 +4281,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/6/product_1782111604_8875.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -4368,8 +4368,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/7/x1K8McFIjAF3kBjzYyd8gQaoxQqIiufwq4zTd1k0-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -4460,8 +4460,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/8/product_1782111914_8070.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -4541,8 +4541,8 @@ const rawProducts = [
       "/uploads/products/mobile-accessories/9/product_1782805166_2305.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -4625,8 +4625,8 @@ const rawProducts = [
       "/uploads/products/mobile-phone/1/product_1782306073_3228.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -4707,8 +4707,8 @@ const rawProducts = [
       "/uploads/products/mobile-phone/2/product_1777264839_6368.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -4794,8 +4794,8 @@ const rawProducts = [
       "/uploads/products/mobile-phone/3/product_1777265579_6891.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -4881,8 +4881,8 @@ const rawProducts = [
       "/uploads/products/mobile-phone/4/product_1777265952_7990.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -4966,8 +4966,8 @@ const rawProducts = [
       "/uploads/products/mobile-phone/5/product_1777266977_8131.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -5053,8 +5053,8 @@ const rawProducts = [
       "/uploads/products/mobile-phone/6/product_1777267216_3659.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -5143,8 +5143,8 @@ const rawProducts = [
       "/uploads/products/mobile-phone/7/product_1781161384_8839.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -5224,8 +5224,8 @@ const rawProducts = [
       "/uploads/products/mobile-phone/8/product_1781161384_8839.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -5310,8 +5310,8 @@ const rawProducts = [
       "/uploads/products/mobile-phone/9/product_1783234704_6318-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -5320,8 +5320,8 @@ const rawProducts = [
     "slug": "t1-t2-professional-wireless-gaming-mouse-rechargeable-battery-cool-backlight-for-fps-shooter",
     "title": "T1 & T2 Professional Wireless Gaming Mouse | Rechargeable Battery | Cool Backlight for FPS Shooter",
     "titleBn": "T1 & T2 Professional Wireless Gaming Mouse | Rechargeable Battery | Cool Backlight for FPS Shooter",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -5339,7 +5339,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "mouse-keyboard",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -5397,8 +5397,8 @@ const rawProducts = [
       "/uploads/products/mouse-keyboard/1/photo_6289661043432690721_y-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -5482,8 +5482,8 @@ const rawProducts = [
       "/uploads/products/mouse-keyboard/2/WhatsApp-Image-2026-04-08-at-1.34.41-AM-1024x1024.jpeg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -5492,8 +5492,8 @@ const rawProducts = [
     "slug": "ergonomic-inflatable-lumbar-pillow-travel-friendly-back-support-for-office-home-ash",
     "title": "Ergonomic Inflatable Lumbar Pillow – Travel-Friendly Back Support for Office & Home - Ash",
     "titleBn": "Ergonomic Inflatable Lumbar Pillow – Travel-Friendly Back Support for Office & Home - Ash",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -5511,7 +5511,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "pillow",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -5567,8 +5567,8 @@ const rawProducts = [
       "/uploads/products/pillow/1/6244519343718862613-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -5577,8 +5577,8 @@ const rawProducts = [
     "slug": "wireless-thermal-printer",
     "title": "Wireless Thermal Printer",
     "titleBn": "Wireless Thermal Printer",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -5596,7 +5596,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "printer",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -5649,8 +5649,8 @@ const rawProducts = [
       "/uploads/products/printer/1/WhatsApp-Image-2026-02-23-at-15.30.06-copy-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -5767,8 +5767,8 @@ const rawProducts = [
       "/uploads/products/speaker/1/IMG_6948-1024x768.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -5854,8 +5854,8 @@ const rawProducts = [
       "/uploads/products/speaker/2/QrTUDFto325uARuh6GjrFG6z4i6LJmvURmWJwKuO.png"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -5939,8 +5939,8 @@ const rawProducts = [
       "/uploads/products/speaker/3/S4RsnyeRkxJc0yc1ZeXkrNh2SqBnln23weQfH9Kp-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -6031,8 +6031,8 @@ const rawProducts = [
       "/uploads/products/speaker/4/xTreame-p192-1-1024x767.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -6041,8 +6041,8 @@ const rawProducts = [
     "slug": "m25-detachable-dual-speaker-system-portable-high-quality-stereo-sound-black",
     "title": "M25 Detachable Dual Speaker System – Portable High-Quality Stereo Sound - Black",
     "titleBn": "M25 Detachable Dual Speaker System – Portable High-Quality Stereo Sound - Black",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "gadgets",
     "mainCategoryName": "Gadgets & Electronics",
     "mainCategoryNameBn": "গ্যাজেটস ও ইলেকট্রনিক্স",
@@ -6060,7 +6060,7 @@ const rawProducts = [
     "tags": [
       "gadgets",
       "speaker",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -6121,8 +6121,8 @@ const rawProducts = [
       "/uploads/products/speaker/5/photo_6258069999897480421_y-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -6204,8 +6204,8 @@ const rawProducts = [
       "/uploads/products/speaker/6/6242267543905178650-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -6289,8 +6289,8 @@ const rawProducts = [
       "/uploads/products/ups/1/GSi5jGJTQj6OgBvnJ5Fd5O7JCewbMbLb6E22hQ6V-1024x1024.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -6299,8 +6299,8 @@ const rawProducts = [
     "slug": "78-water-proof-premium-3d-design-bed-sheet",
     "title": "7/8 Water Proof Premium 3D Design Bed Sheet",
     "titleBn": "7/8 Water Proof Premium 3D Design Bed Sheet",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "home-appliance",
     "mainCategoryName": "Home & Living",
     "mainCategoryNameBn": "হোম অ্যাপ্লায়েন্সেস",
@@ -6318,7 +6318,7 @@ const rawProducts = [
     "tags": [
       "home-appliance",
       "bed-sheets",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -6372,8 +6372,8 @@ const rawProducts = [
       "/uploads/products/bed-sheets/1/Gemini_Generated_Image_7m3six7m3six7m3s-a4890eb3-d7b8-441b-bae4-542b159cefa5-1024x768.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -6382,8 +6382,8 @@ const rawProducts = [
     "slug": "78-water-proof-premium-3d-design-bed-sheet-1",
     "title": "7/8 Water Proof Premium 3D Design Bed Sheet",
     "titleBn": "7/8 Water Proof Premium 3D Design Bed Sheet",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "home-appliance",
     "mainCategoryName": "Home & Living",
     "mainCategoryNameBn": "হোম অ্যাপ্লায়েন্সেস",
@@ -6401,7 +6401,7 @@ const rawProducts = [
     "tags": [
       "home-appliance",
       "bed-sheets",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -6455,8 +6455,8 @@ const rawProducts = [
       "/uploads/products/bed-sheets/2/Gemini_Generated_Image_j83g5kj83g5kj83g-b8afe698-3627-4531-8ba3-d895e6750ae2-1024x768.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   },
@@ -6465,8 +6465,8 @@ const rawProducts = [
     "slug": "78-water-proof-premium-3d-design-bed-sheet-2",
     "title": "7/8 Water Proof Premium 3D Design Bed Sheet",
     "titleBn": "7/8 Water Proof Premium 3D Design Bed Sheet",
-    "brand": "ResellerHub Premium",
-    "brandSlug": "resellerhub",
+    "brand": "Kenakata Choice",
+    "brandSlug": "kenakata-choice",
     "mainCategorySlug": "home-appliance",
     "mainCategoryName": "Home & Living",
     "mainCategoryNameBn": "হোম অ্যাপ্লায়েন্সেস",
@@ -6484,7 +6484,7 @@ const rawProducts = [
     "tags": [
       "home-appliance",
       "bed-sheets",
-      "resellerhub",
+      "kenakata-choice",
       "verified-merchant",
       "fast-delivery"
     ],
@@ -6539,8 +6539,8 @@ const rawProducts = [
       "/uploads/products/bed-sheets/3/Gemini_Generated_Image_5ktqsv5ktqsv5ktq-7813ee20-9ece-41b5-a7de-e264aa848874-1024x768.jpg"
     ],
     "merchant": {
-      "name": "ResellerHub BD",
-      "slug": "resellerhubbd",
+      "name": "Verified Merchant",
+      "slug": "verified-merchant",
       "isVerified": true
     }
   }

@@ -139,7 +139,7 @@ export default function CategoryPage() {
               </h1>
             </div>
             <p className="text-sm text-content-tertiary">
-              Showing {categoryProducts.length} verified products from <strong>ResellerHub BD</strong>
+              Showing {categoryProducts.length} verified products with official warranty
             </p>
           </div>
 
@@ -268,14 +268,14 @@ export default function CategoryPage() {
               </label>
             </div>
 
-            {/* Merchant Guarantee */}
+            {/* Quality Guarantee */}
             <div className="bg-emerald-50 border border-emerald-200/80 rounded-xl p-4 shadow-xs space-y-2 text-xs">
               <div className="flex items-center gap-1.5 text-emerald-900 font-bold">
                 <ShieldCheck className="w-4 h-4 text-emerald-600" weight="fill" />
-                Verified Merchant
+                100% Genuine Guarantee
               </div>
               <p className="text-emerald-800 text-[11px] leading-relaxed">
-                All products in this category are supplied directly by <strong>ResellerHub BD</strong> with verified authentic warranties.
+                All products in this category are verified by Kenakata with authentic brand warranties and 7-day return guarantee.
               </p>
             </div>
           </aside>

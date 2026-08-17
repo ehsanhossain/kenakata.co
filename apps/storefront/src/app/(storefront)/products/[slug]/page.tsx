@@ -190,18 +190,23 @@ export default function ProductDetailPage() {
               <span className="text-content-tertiary">SKU: <strong className="text-content-secondary">{product.sku}</strong></span>
             </div>
 
-            {/* Verified Merchant Banner */}
+            {/* Verified Merchant & Quality Guarantee */}
             <div className="bg-emerald-50/70 border border-emerald-200/80 rounded-xl p-3 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-xs shadow-xs">
-                  <Storefront className="w-4 h-4" />
+                  <ShieldCheck className="w-4 h-4" weight="fill" />
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-emerald-900">Sold by ResellerHub BD</p>
-                  <p className="text-[11px] text-emerald-700">Kenakata Verified Merchant • 100% Authentic Guarantee</p>
+                  <p className="text-xs font-semibold text-emerald-900">
+                    {(process.env.NEXT_PUBLIC_SHOW_MERCHANT_NAME === 'true' && product.merchant?.name)
+                      ? `Sold by ${product.merchant.name}`
+                      : '100% Genuine & Authentic Item'}
+                  </p>
+                  <p className="text-[11px] text-emerald-700">Official Brand Warranty • Quality Inspected by Kenakata</p>
                 </div>
               </div>
-              <span className="badge-green text-xs font-semibold px-2 py-0.5">
+              <span className="badge-green text-xs font-semibold px-2.5 py-0.5 flex items-center gap-1">
+                <ShieldCheck className="w-3.5 h-3.5" weight="fill" />
                 Verified
               </span>
             </div>
@@ -402,8 +407,8 @@ export default function ProductDetailPage() {
 
                 {/* Sample reviews */}
                 {[
-                  { name: 'Tanvir Ahmed', rating: 5, date: '1 week ago', text: 'Original product from ResellerHub BD. Fast delivery and exactly as described!' },
-                  { name: 'Sadia Rahman', rating: 5, date: '2 weeks ago', text: 'Very impressed with the quality and packaging. Recommended seller.' },
+                  { name: 'Tanvir Ahmed', rating: 5, date: '1 week ago', text: '100% original product with official packaging. Fast delivery and exactly as described!' },
+                  { name: 'Sadia Rahman', rating: 5, date: '2 weeks ago', text: 'Very impressed with the quality and packaging. Highly recommended.' },
                   { name: 'Mahmudul Hasan', rating: 4, date: '3 weeks ago', text: 'Good quality for the price. Works smoothly without any issues.' },
                 ].map((review, i) => (
                   <div key={i} className="border-b border-border pb-5">

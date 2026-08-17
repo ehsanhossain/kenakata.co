@@ -1,0 +1,119 @@
+services:
+  kenakata-storefront:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: kenakata-storefront:latest
+    container_name: kenakata-storefront
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - NEXT_TELEMETRY_DISABLED=1
+      - NEXT_PUBLIC_SITE_URL=https://kenakata.co
+      - NEXT_PUBLIC_ADMIN_URL=https://base.kenakata.co
+      - NEXT_PUBLIC_API_URL=https://api.kenakata.co/api/v1
+    networks:
+      - coolify
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.gzip.compress=true"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      # HTTP Routers (Redirect to HTTPS)
+      - "traefik.http.routers.kenakata-storefront-http-0.entryPoints=http"
+      - "traefik.http.routers.kenakata-storefront-http-0.middlewares=redirect-to-https"
+      - "traefik.http.routers.kenakata-storefront-http-0.rule=Host(`kenakata.co`) && PathPrefix(`/`)"
+      - "traefik.http.routers.kenakata-storefront-http-0.service=kenakata-storefront-service"
+      - "traefik.http.routers.kenakata-storefront-http-1.entryPoints=http"
+      - "traefik.http.routers.kenakata-storefront-http-1.middlewares=redirect-to-https"
+      - "traefik.http.routers.kenakata-storefront-http-1.rule=Host(`www.kenakata.co`) && PathPrefix(`/`)"
+      - "traefik.http.routers.kenakata-storefront-http-1.service=kenakata-storefront-service"
+      # HTTPS Routers (Let's Encrypt TLS)
+      - "traefik.http.routers.kenakata-storefront-https-0.entryPoints=https"
+      - "traefik.http.routers.kenakata-storefront-https-0.middlewares=gzip"
+      - "traefik.http.routers.kenakata-storefront-https-0.rule=Host(`kenakata.co`) && PathPrefix(`/`)"
+      - "traefik.http.routers.kenakata-storefront-https-0.service=kenakata-storefront-service"
+      - "traefik.http.routers.kenakata-storefront-https-0.tls=true"
+      - "traefik.http.routers.kenakata-storefront-https-0.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.kenakata-storefront-https-1.entryPoints=https"
+      - "traefik.http.routers.kenakata-storefront-https-1.middlewares=gzip"
+      - "traefik.http.routers.kenakata-storefront-https-1.rule=Host(`www.kenakata.co`) && PathPrefix(`/`)"
+      - "traefik.http.routers.kenakata-storefront-https-1.service=kenakata-storefront-service"
+      - "traefik.http.routers.kenakata-storefront-https-1.tls=true"
+      - "traefik.http.routers.kenakata-storefront-https-1.tls.certresolver=letsencrypt"
+      # Load Balancer Service Port
+      - "traefik.http.services.kenakata-storefront-service.loadbalancer.server.port=3000"
+
+  kenakata-admin:
+    build:
+      context: .
+      dockerfile: Dockerfile.admin
+    image: kenakata-admin:latest
+    container_name: kenakata-admin
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - NEXT_TELEMETRY_DISABLED=1
+      - NEXT_PUBLIC_SITE_URL=https://kenakata.co
+      - NEXT_PUBLIC_ADMIN_URL=https://base.kenakata.co
+      - NEXT_PUBLIC_API_URL=https://api.kenakata.co/api/v1
+    networks:
+      - coolify
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.gzip.compress=true"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      # HTTP Router (Redirect)
+      - "traefik.http.routers.kenakata-admin-http.entryPoints=http"
+      - "traefik.http.routers.kenakata-admin-http.middlewares=redirect-to-https"
+      - "traefik.http.routers.kenakata-admin-http.rule=Host(`base.kenakata.co`) && PathPrefix(`/`)"
+      - "traefik.http.routers.kenakata-admin-http.service=kenakata-admin-service"
+      # HTTPS Router
+      - "traefik.http.routers.kenakata-admin-https.entryPoints=https"
+      - "traefik.http.routers.kenakata-admin-https.middlewares=gzip"
+      - "traefik.http.routers.kenakata-admin-https.rule=Host(`base.kenakata.co`) && PathPrefix(`/`)"
+      - "traefik.http.routers.kenakata-admin-https.service=kenakata-admin-service"
+      - "traefik.http.routers.kenakata-admin-https.tls=true"
+      - "traefik.http.routers.kenakata-admin-https.tls.certresolver=letsencrypt"
+      # Service Port
+      - "traefik.http.services.kenakata-admin-service.loadbalancer.server.port=3000"
+
+  kenakata-shop:
+    build:
+      context: .
+      dockerfile: Dockerfile.shop
+    image: kenakata-shop:latest
+    container_name: kenakata-shop
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - NEXT_TELEMETRY_DISABLED=1
+      - NEXT_PUBLIC_SITE_URL=https://kenakata.co
+      - NEXT_PUBLIC_SHOP_URL=https://shop.kenakata.co
+      - NEXT_PUBLIC_API_URL=https://api.kenakata.co/api/v1
+    networks:
+      - coolify
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.gzip.compress=true"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      # HTTP Router (Redirect)
+      - "traefik.http.routers.kenakata-shop-http.entryPoints=http"
+      - "traefik.http.routers.kenakata-shop-http.middlewares=redirect-to-https"
+      - "traefik.http.routers.kenakata-shop-http.rule=Host(`shop.kenakata.co`) && PathPrefix(`/`)"
+      - "traefik.http.routers.kenakata-shop-http.service=kenakata-shop-service"
+      # HTTPS Router
+      - "traefik.http.routers.kenakata-shop-https.entryPoints=https"
+      - "traefik.http.routers.kenakata-shop-https.middlewares=gzip"
+      - "traefik.http.routers.kenakata-shop-https.rule=Host(`shop.kenakata.co`) && PathPrefix(`/`)"
+      - "traefik.http.routers.kenakata-shop-https.service=kenakata-shop-service"
+      - "traefik.http.routers.kenakata-shop-https.tls=true"
+      - "traefik.http.routers.kenakata-shop-https.tls.certresolver=letsencrypt"
+      # Service Port
+      - "traefik.http.services.kenakata-shop-service.loadbalancer.server.port=3000"
+
+networks:
+  coolify:
+    external: true

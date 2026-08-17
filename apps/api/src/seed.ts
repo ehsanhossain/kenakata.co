@@ -6549,13 +6549,24 @@ const rawProducts = [
 async function main() {
   console.log('🌱 Starting Kenakata database seed (ResellerHub BD Verified Catalog)...');
 
-  // 1. Clean up old demo products if needed
-  console.log('1. Cleaning previous demo products...');
+  // 1. Clean up catalog data cleanly
+  console.log('1. Cleaning previous catalog tables...');
   try {
-    const demoSlugs = ['samsung-galaxy-a55-5g', 'xiaomi-redmi-note-13-pro', 'soundcore-space-one-wireless-headphones', 'aarong-premium-silk-panjabi', 'aarong-handloom-cotton-saree', 'apex-mens-leather-formal-shoes', 'walton-inverter-air-conditioner-1-5ton', 'philips-multipurpose-kitchen-mixer-grinder', 'radhuni-pure-mustard-oil-1l'];
-    await prisma.product.deleteMany({
-      where: { slug: { in: demoSlugs } }
-    });
+    await prisma.$executeRawUnsafe(`
+      TRUNCATE TABLE 
+        inventory_reservations,
+        inventory_ledger,
+        inventory_balances,
+        cart_items,
+        prices,
+        product_media,
+        product_translations,
+        product_variants,
+        products,
+        category_translations,
+        categories
+      CASCADE;
+    `);
   } catch (e) {
     console.log('Cleanup note:', e.message);
   }

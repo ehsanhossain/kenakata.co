@@ -6806,10 +6806,10 @@ export const flashDeals = products.slice(0, 8).map((p, idx) => ({
 export const heroBanners = [
   {
     "id": "b1",
-    "titleEn": "ResellerHub BD Official Store",
-    "titleBn": "রিসেলারহাব বিডি অফিশিয়াল স্টোর",
-    "subtitleEn": "Wholesale & Retail Authentic Gadgets, Mobile Accessories & Home Living",
-    "subtitleBn": "পাইকারি ও খুচরা অথেনটিক গ্যাজেট, মোবাইল এক্সেসরিজ ও হোম লিভিং",
+    "titleEn": "Premium Gadgets & Home Living",
+    "titleBn": "প্রিমিয়াম গ্যাজেট ও হোম লিভিং",
+    "subtitleEn": "100% Genuine Electronics, Mobile Accessories & Bedding Sets",
+    "subtitleBn": "১০০% অথেনটিক গ্যাজেট, মোবাইল এক্সেসরিজ ও বেডিং সেট",
     "ctaEn": "Explore Catalog",
     "ctaBn": "ক্যাটালগ দেখুন",
     "link": "/categories/gadgets",

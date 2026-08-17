@@ -127,6 +127,7 @@ console.log(`Found ${rawProducts.length} products to process.`);
 
 let processedProducts = [];
 let usedSlugs = new Set();
+let usedSkus = new Set();
 let copiedImagesCount = 0;
 
 rawProducts.forEach((item, index) => {
@@ -248,6 +249,16 @@ rawProducts.forEach((item, index) => {
   const fullDescription = descriptionLines.join('\n\n') || rawTitle;
   const shortDesc = highlights.slice(0, 3).join(' • ') || `${rawTitle} - Official authentic distributor warranty and rapid doorstep delivery across Bangladesh.`;
 
+  // Ensure SKU is unique
+  let finalSku = sku || `RHB-${subMeta.slug.toUpperCase().slice(0, 3)}-${item.folderId}`;
+  if (usedSkus.has(finalSku)) {
+    finalSku = `${finalSku}-${subMeta.slug.slice(0, 3).toUpperCase()}`;
+  }
+  if (usedSkus.has(finalSku)) {
+    finalSku = `${finalSku}-${index + 1}`;
+  }
+  usedSkus.add(finalSku);
+
   processedProducts.push({
     id: `rhb-prod-${index + 1}`,
     slug: finalSlug,
@@ -268,12 +279,12 @@ rawProducts.forEach((item, index) => {
     reviewCount: 12 + ((index * 7) % 45),
     inStock: true,
     stockQty: 25 + ((index * 13) % 80),
-    sku: sku,
+    sku: finalSku,
     tags: [mainMeta.slug, subMeta.slug, brandInfo.slug, 'verified-merchant', 'fast-delivery'],
     variants: [
       {
         id: `rhb-var-${index + 1}-1`,
-        sku: sku,
+        sku: finalSku,
         title: 'Standard',
         optionValues: { Edition: 'Official BD' },
         price: price * 100,

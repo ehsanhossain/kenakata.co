@@ -4306,7 +4306,7 @@ export const products: Product[] = [
     "reviewCount": 19,
     "inStock": true,
     "stockQty": 63,
-    "sku": "2168",
+    "sku": "2168-MOB",
     "tags": [
       "gadgets",
       "mobile-accessories",
@@ -4317,7 +4317,7 @@ export const products: Product[] = [
     "variants": [
       {
         "id": "rhb-var-47-1",
-        "sku": "2168",
+        "sku": "2168-MOB",
         "title": "Standard",
         "optionValues": {
           "Edition": "Official BD"
@@ -4497,7 +4497,7 @@ export const products: Product[] = [
     "reviewCount": 33,
     "inStock": true,
     "stockQty": 89,
-    "sku": "13165",
+    "sku": "13165-MOB",
     "tags": [
       "gadgets",
       "mobile-accessories",
@@ -4508,7 +4508,7 @@ export const products: Product[] = [
     "variants": [
       {
         "id": "rhb-var-49-1",
-        "sku": "13165",
+        "sku": "13165-MOB",
         "title": "Standard",
         "optionValues": {
           "Edition": "Official BD"
@@ -5983,7 +5983,7 @@ export const products: Product[] = [
     "reviewCount": 17,
     "inStock": true,
     "stockQty": 70,
-    "sku": "13134",
+    "sku": "13134-SPE",
     "tags": [
       "gadgets",
       "speaker",
@@ -5994,7 +5994,7 @@ export const products: Product[] = [
     "variants": [
       {
         "id": "rhb-var-66-1",
-        "sku": "13134",
+        "sku": "13134-SPE",
         "title": "Standard",
         "optionValues": {
           "Edition": "Official BD"
@@ -6070,7 +6070,7 @@ export const products: Product[] = [
     "reviewCount": 24,
     "inStock": true,
     "stockQty": 83,
-    "sku": "13254",
+    "sku": "13254-SPE",
     "tags": [
       "gadgets",
       "speaker",
@@ -6081,7 +6081,7 @@ export const products: Product[] = [
     "variants": [
       {
         "id": "rhb-var-67-1",
-        "sku": "13254",
+        "sku": "13254-SPE",
         "title": "Standard",
         "optionValues": {
           "Edition": "Official BD"

@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Heart, ShoppingCart, X, ShoppingBag
 } from '@phosphor-icons/react';

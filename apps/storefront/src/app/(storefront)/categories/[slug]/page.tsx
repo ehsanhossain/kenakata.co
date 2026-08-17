@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import {
   Sliders, CaretDown, X, GridNine, ListDashes, CaretRight, Sparkle, ShieldCheck, Check
 } from '@phosphor-icons/react';
 import ProductCard from '@/components/ProductCard';
+import CategoryIcon from '@/components/CategoryIcon';
 import { products, categories, brands, formatBDT, type Product } from '@/lib/mock-data';
 
 const sortOptions = [
@@ -29,15 +30,23 @@ export default function CategoryPage() {
   const [inStockOnly, setInStockOnly] = useState(true);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
+  // Reset filters on slug change
+  useEffect(() => {
+    setSelectedSubcat(null);
+    setSelectedBrands([]);
+  }, [slug]);
+
   // Find matching parent category or subcategory
   const currentCategory = useMemo(() => {
+    const cleanSlug = decodeURIComponent(slug).toLowerCase().trim();
+
     // Check main category
-    const main = categories.find(c => c.slug === slug);
+    const main = categories.find(c => c.slug === cleanSlug || c.id === cleanSlug || c.slug === cleanSlug.replace(/-electronics$/, ''));
     if (main) return { category: main, isMain: true, parent: null };
 
     // Check subcategory
     for (const parent of categories) {
-      const sub = parent.children?.find(c => c.slug === slug);
+      const sub = parent.children?.find(c => c.slug === cleanSlug || c.id === cleanSlug || c.slug === cleanSlug.replace(/s$/, ''));
       if (sub) return { category: sub, isMain: false, parent };
     }
 
@@ -132,8 +141,10 @@ export default function CategoryPage() {
         {/* Page Header */}
         <div className="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-2xl">{currentCategory.category.icon}</span>
+            <div className="flex items-center gap-2.5 mb-1">
+              <div className="w-10 h-10 rounded-xl bg-surface-brand-subtle text-content-brand flex items-center justify-center">
+                <CategoryIcon slug={currentCategory.category.slug} className="w-6 h-6" weight="duotone" />
+              </div>
               <h1 className="text-2xl sm:text-3xl font-bold text-content-primary">
                 {currentCategory.category.name}
               </h1>

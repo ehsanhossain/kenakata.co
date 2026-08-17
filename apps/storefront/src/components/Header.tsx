@@ -4,7 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import {
-  MagnifyingGlass, User, Heart, ShoppingCart, List, X, CaretDown, Globe, Package
+  MagnifyingGlass, User, Heart, ShoppingCart, List, X, CaretDown, Globe, Package,
+  Lightning, Camera, Headphones, DeviceMobile, SpeakerHigh, Wind, Lightbulb, House, Bed
 } from '@phosphor-icons/react';
 import { categories, trendingSearches } from '../lib/mock-data';
 import { useAuth } from '../context/AuthContext';
@@ -265,73 +266,82 @@ export default function Header() {
             <li>
               <Link
                 href="/categories/gadgets"
-                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
               >
-                ⚡ Gadgets
+                <Lightning className="w-3.5 h-3.5 text-amber-500" weight="fill" />
+                <span>Gadgets</span>
               </Link>
             </li>
             <li>
               <Link
                 href="/categories/camera"
-                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
               >
-                📹 Cameras
+                <Camera className="w-3.5 h-3.5 text-blue-500" weight="fill" />
+                <span>Cameras</span>
               </Link>
             </li>
             <li>
               <Link
                 href="/categories/earbuds"
-                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
               >
-                🎧 Earbuds & Audio
+                <Headphones className="w-3.5 h-3.5 text-purple-500" weight="fill" />
+                <span>Earbuds & Audio</span>
               </Link>
             </li>
             <li>
               <Link
                 href="/categories/mobile-accessories"
-                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
               >
-                🔌 Mobile Accessories
+                <DeviceMobile className="w-3.5 h-3.5 text-emerald-500" weight="fill" />
+                <span>Mobile Accessories</span>
               </Link>
             </li>
             <li>
               <Link
                 href="/categories/speaker"
-                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
               >
-                🔊 Bluetooth Speakers
+                <SpeakerHigh className="w-3.5 h-3.5 text-indigo-500" weight="fill" />
+                <span>Bluetooth Speakers</span>
               </Link>
             </li>
             <li>
               <Link
                 href="/categories/fan"
-                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
               >
-                🌀 Cooling Fans
+                <Wind className="w-3.5 h-3.5 text-cyan-500" weight="fill" />
+                <span>Cooling Fans</span>
               </Link>
             </li>
             <li>
               <Link
                 href="/categories/light"
-                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
               >
-                💡 Smart Lights
+                <Lightbulb className="w-3.5 h-3.5 text-amber-400" weight="fill" />
+                <span>Smart Lights</span>
               </Link>
             </li>
             <li>
               <Link
                 href="/categories/home-appliance"
-                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-semibold text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
               >
-                🏠 Home Living
+                <House className="w-3.5 h-3.5 text-rose-500" weight="fill" />
+                <span>Home Living</span>
               </Link>
             </li>
             <li>
               <Link
                 href="/categories/bed-sheets"
-                className="flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium text-content-secondary hover:text-content-brand hover:bg-surface-brand-subtle rounded-lg transition-all"
               >
-                🛏️ 3D Bed Sheets
+                <Bed className="w-3.5 h-3.5 text-teal-500" weight="fill" />
+                <span>3D Bed Sheets</span>
               </Link>
             </li>
           </ul>

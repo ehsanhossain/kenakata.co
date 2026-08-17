@@ -7,6 +7,7 @@ import {
   CaretRight, CaretLeft, ArrowRight, Timer, Fire, TrendUp, Sparkle, Star, ShoppingBag, Lightning, ShieldCheck, Truck, CreditCard, Storefront
 } from '@phosphor-icons/react';
 import ProductCard from '@/components/ProductCard';
+import CategoryIcon from '@/components/CategoryIcon';
 import {
   categories, brands, products, flashDeals, heroBanners,
   getFeaturedProducts, getNewProducts, getBestSellers, formatBDT
@@ -182,8 +183,8 @@ export default function HomePage() {
               href={`/categories/${sub.slug}`}
               className="group flex flex-col items-center text-center p-3 rounded-2xl bg-white border border-border/80 hover:border-border-brand hover:shadow-md transition-all"
             >
-              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-surface-subtle flex items-center justify-center text-2xl sm:text-3xl group-hover:scale-110 transition-transform">
-                {sub.icon}
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-surface-brand-subtle text-content-brand flex items-center justify-center group-hover:scale-110 group-hover:bg-action-primary/10 transition-all duration-fast">
+                <CategoryIcon slug={sub.slug} className="w-7 h-7" weight="duotone" />
               </div>
               <span className="text-xs font-semibold text-content-primary mt-2.5 group-hover:text-content-brand transition-colors line-clamp-2 leading-tight">
                 {sub.name}

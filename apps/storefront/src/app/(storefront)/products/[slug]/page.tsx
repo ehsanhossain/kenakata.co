@@ -131,21 +131,39 @@ export default function ProductDetailPage() {
 
   return (
     <div>
-      {/* Breadcrumb */}
+      {/* Breadcrumb Navigation */}
       <div className="bg-surface-subtle border-b border-border">
         <div className="container-page py-3">
-          <nav className="flex items-center gap-2 text-sm text-content-tertiary overflow-x-auto no-scrollbar">
-            <Link href="/" className="hover:text-content-brand transition-colors shrink-0">Home</Link>
-            <CaretRight className="w-3.5 h-3.5 shrink-0" />
-            <Link href={`/categories/${product.mainCategorySlug || 'gadgets'}`} className="hover:text-content-brand transition-colors shrink-0">
-              {product.mainCategoryName || 'Gadgets'}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs sm:text-sm text-content-tertiary overflow-x-auto no-scrollbar">
+            <Link href="/" className="font-medium hover:text-content-brand hover:underline transition-colors shrink-0">
+              Home
             </Link>
-            <CaretRight className="w-3.5 h-3.5 shrink-0" />
-            <Link href={`/categories/${product.categorySlug}`} className="hover:text-content-brand transition-colors shrink-0">
+            <CaretRight className="w-3.5 h-3.5 shrink-0 text-neutral-400" />
+            <Link href="/categories" className="font-medium hover:text-content-brand hover:underline transition-colors shrink-0">
+              Categories
+            </Link>
+            {product.mainCategorySlug && product.mainCategorySlug !== product.categorySlug && (
+              <>
+                <CaretRight className="w-3.5 h-3.5 shrink-0 text-neutral-400" />
+                <Link
+                  href={`/categories/${product.mainCategorySlug}`}
+                  className="font-medium hover:text-content-brand hover:underline transition-colors shrink-0"
+                >
+                  {product.mainCategoryName || 'Gadgets'}
+                </Link>
+              </>
+            )}
+            <CaretRight className="w-3.5 h-3.5 shrink-0 text-neutral-400" />
+            <Link
+              href={`/categories/${product.categorySlug}`}
+              className="font-medium hover:text-content-brand hover:underline transition-colors shrink-0"
+            >
               {product.categoryName}
             </Link>
-            <CaretRight className="w-3.5 h-3.5 shrink-0" />
-            <span className="text-content-primary font-medium truncate">{product.title}</span>
+            <CaretRight className="w-3.5 h-3.5 shrink-0 text-neutral-400" />
+            <span className="text-content-primary font-semibold truncate max-w-[200px] sm:max-w-xs md:max-w-md">
+              {product.title}
+            </span>
           </nav>
         </div>
       </div>

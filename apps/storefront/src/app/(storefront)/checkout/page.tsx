@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import {
-  MapPin, CreditCard, Truck, ShieldCheck, Check, CaretDown, Lock, Phone, User, EnvelopeSimple, House, FileText, ShoppingBag
+  MapPin, CreditCard, Truck, ShieldCheck, Check, CaretDown, Lock, Phone, User, EnvelopeSimple, House, FileText, ShoppingBag, Money, DeviceMobile
 } from '@phosphor-icons/react';
 import { products, formatBDT } from '@/lib/mock-data';
 
@@ -211,9 +211,9 @@ export default function CheckoutPage() {
  <div className="animate-fade-in space-y-5">
  <h2 className="text-lg font-semibold text-content-primary">Payment Method</h2>
  {[
- { value: 'cod', label: 'Cash on Delivery', desc: 'Pay when you receive', icon: '💵' },
- { value: 'bkash', label: 'bKash', desc: 'Pay with bKash mobile wallet', icon: '📱' },
- { value: 'sslcommerz', label: 'Card / Online Banking', desc: 'Visa, Mastercard, bank transfer', icon: '💳' },
+ { value: 'cod', label: 'Cash on Delivery', desc: 'Pay when you receive', icon: <Money className="w-5 h-5 text-emerald-600" weight="bold" /> },
+ { value: 'bkash', label: 'bKash', desc: 'Pay with bKash mobile wallet', icon: <DeviceMobile className="w-5 h-5 text-pink-600" weight="bold" /> },
+ { value: 'sslcommerz', label: 'Card / Online Banking', desc: 'Visa, Mastercard, bank transfer', icon: <CreditCard className="w-5 h-5 text-blue-600" weight="bold" /> },
  ].map(opt => (
  <label key={opt.value}
  className={`block p-4 rounded-xl border-2 cursor-pointer transition-all ${
@@ -226,7 +226,9 @@ export default function CheckoutPage() {
  checked={form.paymentMethod === opt.value}
  onChange={() => setForm({ ...form, paymentMethod: opt.value })}
  className="w-4 h-4 text-content-brand" />
- <span className="text-xl">{opt.icon}</span>
+ <div className="w-8 h-8 rounded-lg bg-surface-subtle flex items-center justify-center">
+    {opt.icon}
+  </div>
  <div>
  <p className="text-sm font-medium text-content-primary">{opt.label}</p>
  <p className="text-xs text-content-tertiary">{opt.desc}</p>

@@ -51,10 +51,8 @@ function CountdownTimer({ endsAt }: { endsAt: string }) {
 
 // ── Hero Banner ──
 function HeroBanner() {
-  const [activeBanner, setActiveBanner] = useState(0);
-
   return (
-    <section className="relative overflow-hidden bg-slate-900">
+    <section className="relative overflow-hidden bg-gradient-to-r from-[var(--k-orange-700)] via-[var(--k-orange-600)] to-[var(--k-orange-500)] text-white">
       <div className="relative w-full min-h-[360px] sm:min-h-[420px] flex items-center">
         {/* Background Image / Banner */}
         <div className="absolute inset-0 z-0">
@@ -62,35 +60,35 @@ function HeroBanner() {
             src="/banner.png"
             alt="Kenakata Storefront"
             fill
-            className="object-cover object-center opacity-40 mix-blend-luminosity"
+            className="object-cover object-center opacity-30 mix-blend-luminosity"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--k-orange-950)]/75 via-[var(--k-orange-700)]/80 to-[var(--k-orange-500)]/30" />
         </div>
 
         <div className="container-page relative z-10 py-12 md:py-20">
           <div className="max-w-xl animate-fade-in space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" weight="fill" />
-              100% Genuine & Verified Products
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/20 text-white backdrop-blur-md border border-white/30 text-xs font-bold shadow-sm">
+              <ShieldCheck className="w-4 h-4 text-white" weight="fill" />
+              100% Genuine &amp; Verified Products
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-white tracking-tight">
-              Premium Gadgets & Home Living
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-white tracking-tight drop-shadow-sm">
+              Premium Gadgets &amp; Home Living
             </h1>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-lg">
+            <p className="text-sm sm:text-base text-white/90 leading-relaxed max-w-lg">
               Explore 74+ verified gadgets, earphones, rechargeable cooling fans, security cameras, and 3D bed sheets with official warranty.
             </p>
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <Link
                 href="/categories/gadgets"
-                className="btn bg-white text-slate-900 hover:bg-white/90 font-bold text-sm sm:text-base px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-normal active:scale-[0.98]"
+                className="btn bg-white text-[var(--k-orange-700)] hover:bg-white/95 font-bold text-sm sm:text-base px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-normal active:scale-[0.98]"
               >
                 Shop Gadgets
                 <ArrowRight className="w-4 h-4 ml-1.5" weight="bold" />
               </Link>
               <Link
                 href="/categories/home-appliance"
-                className="btn bg-white/15 backdrop-blur-md text-white border border-white/25 hover:bg-white/25 font-semibold text-sm sm:text-base px-6 py-3 rounded-xl transition-all"
+                className="btn bg-white/20 backdrop-blur-md text-white border border-white/35 hover:bg-white/30 font-semibold text-sm sm:text-base px-6 py-3 rounded-xl transition-all"
               >
                 Home Living
               </Link>
@@ -321,28 +319,6 @@ export default function HomePage() {
             </Link>
           </div>
         )}
-      </section>
-
-      {/* Quality Assurance Banner */}
-      <section className="bg-emerald-900 text-white">
-        <div className="container-page py-12 sm:py-16 text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-800 text-emerald-200 text-xs font-semibold">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" weight="fill" />
-            Kenakata Quality Promise
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold">100% Authentic Quality Guarantee</h2>
-          <p className="text-emerald-100/80 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-            Every item in our collection is rigorously verified, brand original, and backed by warranty. Enjoy fast delivery across Bangladesh and hassle-free returns.
-          </p>
-          <div className="pt-2">
-            <Link
-              href="/categories/gadgets"
-              className="btn bg-white text-emerald-950 hover:bg-emerald-50 font-bold px-8 py-3 rounded-xl shadow-lg transition-all"
-            >
-              Explore Full Collection
-            </Link>
-          </div>
-        </div>
       </section>
     </div>
   );

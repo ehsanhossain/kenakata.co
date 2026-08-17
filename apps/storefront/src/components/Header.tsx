@@ -8,6 +8,7 @@ import {
   Lightning, Camera, Headphones, DeviceMobile, SpeakerHigh, Wind, Lightbulb, House, Bed
 } from '@phosphor-icons/react';
 import { categories, trendingSearches } from '../lib/mock-data';
+import CategoryIcon from './CategoryIcon';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -48,21 +49,21 @@ export default function Header() {
       }`}
     >
       {/* Announcement Strip */}
-      <div className="bg-surface-inverse text-content-inverse text-xs py-1.5 hidden sm:block">
+      <div className="bg-gradient-to-r from-[var(--k-orange-600)] via-[var(--k-orange-500)] to-[var(--k-orange-600)] text-white text-xs py-1.5 hidden sm:block shadow-xs">
         <div className="container-page flex justify-between items-center">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 font-medium">
             <span className="flex items-center gap-1.5">
-              <Package className="w-3 h-3" weight="bold" />
+              <Package className="w-3.5 h-3.5 text-white" weight="bold" />
               Free delivery on orders over &#2547;2,000
             </span>
             <span className="opacity-40">|</span>
             <span>Cash on Delivery available nationwide</span>
           </div>
-          <div className="flex items-center gap-4">
-            <Link href="/track" className="hover:text-surface-brand-subtle transition-colors duration-fast">
+          <div className="flex items-center gap-4 font-medium">
+            <Link href="/track" className="hover:text-white/80 hover:underline transition-colors duration-fast">
               Track Order
             </Link>
-            <Link href="/help" className="hover:text-surface-brand-subtle transition-colors duration-fast">
+            <Link href="/help" className="hover:text-white/80 hover:underline transition-colors duration-fast">
               Help
             </Link>
           </div>
@@ -351,37 +352,192 @@ export default function Header() {
       {/* Mega List Dropdown */}
       {isMegaMenuOpen && (
         <div
-          className="hidden lg:block absolute left-0 right-0 bg-canvas shadow-lg border-t border-border z-40 animate-fade-in"
+          className="hidden lg:block absolute left-0 right-0 bg-white/95 backdrop-blur-md shadow-2xl border-t border-border z-40 animate-fade-in"
           onMouseEnter={() => setIsMegaMenuOpen(true)}
           onMouseLeave={() => setIsMegaMenuOpen(false)}
         >
-          <div className="container-page py-6">
-            <div className="grid grid-cols-4 gap-8">
-              {categories.map((cat) => (
-                <div key={cat.id}>
+          <div className="container-page py-7">
+            <div className="grid grid-cols-12 gap-8">
+              {/* Column 1: Mobile & Everyday Gadgets */}
+              <div className="col-span-3 space-y-3 border-r border-border/60 pr-4">
+                <div className="flex items-center justify-between pb-2 border-b border-border/80">
                   <Link
-                    href={`/categories/${cat.slug}`}
-                    className="flex items-center gap-2 text-sm font-semibold text-content-primary hover:text-content-brand mb-3 transition-colors"
+                    href="/categories/gadgets"
+                    onClick={() => setIsMegaMenuOpen(false)}
+                    className="text-xs font-extrabold uppercase tracking-wider text-content-primary hover:text-content-brand transition-colors flex items-center gap-1.5"
                   >
-                    {cat.name}
-                    <span className="text-xs text-content-tertiary font-normal">({cat.productCount})</span>
+                    <Lightning className="w-4 h-4 text-[var(--k-orange-500)]" weight="fill" />
+                    Mobile & Gadgets
                   </Link>
-                  {cat.children && (
-                    <ul className="space-y-1.5">
-                      {cat.children.map((child) => (
-                        <li key={child.id}>
-                          <Link
-                            href={`/categories/${child.slug}`}
-                            className="text-sm text-content-secondary hover:text-content-brand transition-colors"
-                          >
-                            {child.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                  <span className="text-[11px] font-bold text-content-tertiary bg-surface-subtle px-2 py-0.5 rounded-full">
+                    45 items
+                  </span>
                 </div>
-              ))}
+                <ul className="space-y-1">
+                  {[
+                    { name: 'Mobile Accessories', slug: 'mobile-accessories', count: 25 },
+                    { name: 'Feature & Mini Phones', slug: 'mobile-phone', count: 9 },
+                    { name: 'Smart Electronics', slug: 'electronics', count: 8 },
+                    { name: 'Keyboards & Mice', slug: 'mouse-keyboard', count: 2 },
+                    { name: 'Mini Router UPS', slug: 'ups', count: 1 },
+                  ].map((item) => (
+                    <li key={item.slug}>
+                      <Link
+                        href={`/categories/${item.slug}`}
+                        onClick={() => setIsMegaMenuOpen(false)}
+                        className="group flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-surface-brand-subtle text-xs font-medium text-content-secondary hover:text-content-brand transition-all"
+                      >
+                        <span className="flex items-center gap-2 group-hover:translate-x-0.5 transition-transform">
+                          <CategoryIcon slug={item.slug} className="w-4 h-4 text-content-tertiary group-hover:text-content-brand transition-colors" weight="bold" />
+                          <span>{item.name}</span>
+                        </span>
+                        <span className="text-[10px] text-content-tertiary font-normal group-hover:text-content-brand">
+                          {item.count}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Column 2: Audio, Cameras & Smart Tech */}
+              <div className="col-span-3 space-y-3 border-r border-border/60 pr-4">
+                <div className="flex items-center justify-between pb-2 border-b border-border/80">
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-content-primary flex items-center gap-1.5">
+                    <Camera className="w-4 h-4 text-blue-500" weight="fill" />
+                    Audio & Smart Tech
+                  </span>
+                  <span className="text-[11px] font-bold text-content-tertiary bg-surface-subtle px-2 py-0.5 rounded-full">
+                    21 items
+                  </span>
+                </div>
+                <ul className="space-y-1">
+                  {[
+                    { name: 'Security & Action Cameras', slug: 'camera', count: 6 },
+                    { name: 'Bluetooth Speakers', slug: 'speaker', count: 6 },
+                    { name: 'Smart Lights & Lamps', slug: 'light', count: 5 },
+                    { name: 'Earbuds & Audio', slug: 'earbuds', count: 3 },
+                    { name: 'Thermal & Label Printers', slug: 'printer', count: 1 },
+                  ].map((item) => (
+                    <li key={item.slug}>
+                      <Link
+                        href={`/categories/${item.slug}`}
+                        onClick={() => setIsMegaMenuOpen(false)}
+                        className="group flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-surface-brand-subtle text-xs font-medium text-content-secondary hover:text-content-brand transition-all"
+                      >
+                        <span className="flex items-center gap-2 group-hover:translate-x-0.5 transition-transform">
+                          <CategoryIcon slug={item.slug} className="w-4 h-4 text-content-tertiary group-hover:text-content-brand transition-colors" weight="bold" />
+                          <span>{item.name}</span>
+                        </span>
+                        <span className="text-[10px] text-content-tertiary font-normal group-hover:text-content-brand">
+                          {item.count}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Column 3: Home Living & Popular Brands */}
+              <div className="col-span-3 space-y-3.5 border-r border-border/60 pr-4">
+                <div>
+                  <div className="flex items-center justify-between pb-2 border-b border-border/80 mb-2">
+                    <Link
+                      href="/categories/home-appliance"
+                      onClick={() => setIsMegaMenuOpen(false)}
+                      className="text-xs font-extrabold uppercase tracking-wider text-content-primary hover:text-content-brand transition-colors flex items-center gap-1.5"
+                    >
+                      <House className="w-4 h-4 text-rose-500" weight="fill" />
+                      Home & Living
+                    </Link>
+                    <span className="text-[11px] font-bold text-content-tertiary bg-surface-subtle px-2 py-0.5 rounded-full">
+                      8 items
+                    </span>
+                  </div>
+                  <ul className="space-y-1">
+                    {[
+                      { name: 'Rechargeable Fans', slug: 'fan', count: 4 },
+                      { name: '3D Bed Sheets & Bedding', slug: 'bed-sheets', count: 3 },
+                      { name: 'Comfort & Health Pillows', slug: 'pillow', count: 1 },
+                    ].map((item) => (
+                      <li key={item.slug}>
+                        <Link
+                          href={`/categories/${item.slug}`}
+                          onClick={() => setIsMegaMenuOpen(false)}
+                          className="group flex items-center justify-between px-2.5 py-1.5 rounded-lg hover:bg-surface-brand-subtle text-xs font-medium text-content-secondary hover:text-content-brand transition-all"
+                        >
+                          <span className="flex items-center gap-2 group-hover:translate-x-0.5 transition-transform">
+                            <CategoryIcon slug={item.slug} className="w-4 h-4 text-content-tertiary group-hover:text-content-brand transition-colors" weight="bold" />
+                            <span>{item.name}</span>
+                          </span>
+                          <span className="text-[10px] text-content-tertiary font-normal group-hover:text-content-brand">
+                            {item.count}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Popular Brands Shortcuts */}
+                <div className="pt-2">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-content-tertiary mb-2">
+                    Popular Brands
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {['Apple', 'boAt', 'V380', 'Recrsi', 'Hoco', 'Kospet'].map((brand) => (
+                      <Link
+                        key={brand}
+                        href={`/categories/gadgets?brand=${brand.toLowerCase()}`}
+                        onClick={() => setIsMegaMenuOpen(false)}
+                        className="px-2 py-0.5 text-[11px] font-medium rounded-md bg-surface-subtle text-content-secondary hover:bg-surface-brand-subtle hover:text-content-brand hover:border-border-brand border border-border transition-all"
+                      >
+                        {brand}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Column 4: Promotional Spotlight */}
+              <div className="col-span-3 flex flex-col justify-between">
+                <div className="rounded-2xl p-5 bg-gradient-to-br from-[var(--k-orange-600)] via-[var(--k-orange-700)] to-[var(--k-orange-800)] text-white shadow-md space-y-3 relative overflow-hidden">
+                  <div className="absolute -right-6 -bottom-6 w-24 h-24 bg-white/10 rounded-full blur-xl pointer-events-none" />
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/20 text-white text-[10px] font-bold uppercase tracking-wider">
+                    <Lightning className="w-3 h-3 text-amber-300" weight="fill" />
+                    100% Genuine
+                  </div>
+                  <h4 className="text-base font-extrabold leading-snug text-white">
+                    Explore 74+ Verified Gadgets & Essentials
+                  </h4>
+                  <p className="text-xs text-white/85 leading-relaxed">
+                    Enjoy official brand warranty, Cash on Delivery nationwide, and 7-day easy returns.
+                  </p>
+                  <div className="pt-1">
+                    <Link
+                      href="/search"
+                      onClick={() => setIsMegaMenuOpen(false)}
+                      className="inline-flex items-center justify-center w-full py-2.5 px-4 rounded-xl bg-white text-[var(--k-orange-700)] font-bold text-xs shadow-md hover:bg-white/95 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                    >
+                      Browse Entire Catalog
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="mt-3 flex items-center justify-between text-xs px-1 text-content-tertiary">
+                  <span className="flex items-center gap-1">
+                    <Package className="w-3.5 h-3.5 text-icon-brand" weight="bold" />
+                    Free shipping &#2547;2k+
+                  </span>
+                  <Link
+                    href="/categories"
+                    onClick={() => setIsMegaMenuOpen(false)}
+                    className="font-bold text-content-brand hover:underline"
+                  >
+                    All Categories &rarr;
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>

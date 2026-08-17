@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import {
-  ShieldCheck, Truck, CreditCard, Headset, Phone, EnvelopeSimple, MapPin
+  ShieldCheck, Truck, CreditCard, Headset, Phone, EnvelopeSimple, MapPin,
+  FacebookLogo, InstagramLogo
 } from '@phosphor-icons/react';
 
 const paymentMethodIcons = [
@@ -63,29 +64,26 @@ export default function Footer() {
               />
             </div>
             <p className="text-xs sm:text-sm text-white/85 leading-relaxed">
-              Bangladesh&apos;s trusted multi-category online store. Find it quickly, understand what you&apos;re buying, and always know what happens next.
+              Find it quickly, understand what you&apos;re buying, and always know what happens next.
             </p>
-            <div className="flex items-center gap-2.5 pt-1">
+            <div className="flex items-center gap-3 pt-1">
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61593208088195"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="w-8 h-8 rounded-lg bg-white/15 hover:bg-white hover:text-[var(--k-orange-700)] text-white flex items-center justify-center transition-all text-xs font-bold shadow-sm"
+                className="w-9 h-9 rounded-xl bg-white/15 hover:bg-white hover:text-[var(--k-orange-700)] text-white flex items-center justify-center transition-all duration-fast shadow-sm hover:scale-105"
               >
-                f
+                <FacebookLogo className="w-5 h-5" weight="fill" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/kenakata.co/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-8 h-8 rounded-lg bg-white/15 hover:bg-white hover:text-[var(--k-orange-700)] text-white flex items-center justify-center transition-all text-xs font-bold shadow-sm"
+                className="w-9 h-9 rounded-xl bg-white/15 hover:bg-white hover:text-[var(--k-orange-700)] text-white flex items-center justify-center transition-all duration-fast shadow-sm hover:scale-105"
               >
-                IG
-              </a>
-              <a
-                href="#"
-                aria-label="YouTube"
-                className="w-8 h-8 rounded-lg bg-white/15 hover:bg-white hover:text-[var(--k-orange-700)] text-white flex items-center justify-center transition-all text-xs font-bold shadow-sm"
-              >
-                YT
+                <InstagramLogo className="w-5 h-5" weight="bold" />
               </a>
             </div>
           </div>
@@ -187,23 +185,23 @@ export default function Footer() {
       {/* ── Payment Methods & Copyright ── */}
       <div className="border-t border-white/15 bg-black/20">
         <div className="container-page py-6">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
-              <span className="text-xs font-bold text-white/90 mr-2 uppercase tracking-wider">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
+              <span className="text-xs font-bold text-white/90 uppercase tracking-wider">
                 Payment Methods:
               </span>
-              <div className="flex flex-wrap items-center gap-2">
+              <div className="flex flex-wrap items-center gap-3.5 sm:gap-4">
                 {paymentMethodIcons.map((file, idx) => (
                   <div
                     key={idx}
-                    className="h-7 px-2.5 bg-white rounded-md flex items-center justify-center shadow-md hover:scale-105 transition-transform"
+                    className="flex items-center justify-center transition-transform duration-fast hover:scale-115"
                   >
                     <Image
                       src={`/payment-methods/${file}`}
                       alt={`Payment method ${idx + 1}`}
-                      width={38}
-                      height={20}
-                      className="h-4.5 w-auto object-contain"
+                      width={52}
+                      height={26}
+                      className="h-6 sm:h-7.5 w-auto object-contain drop-shadow-sm filter contrast-125"
                     />
                   </div>
                 ))}
@@ -212,11 +210,8 @@ export default function Footer() {
 
             {/* Copyright Kenakata 2026 */}
             <div className="text-xs text-white/90 text-center lg:text-right shrink-0">
-              <p className="font-bold text-white">
+              <p className="font-semibold text-white/95 text-xs sm:text-sm">
                 &copy; Kenakata 2026. All rights reserved.
-              </p>
-              <p className="text-[11px] text-white/70 mt-0.5">
-                Bangladesh&apos;s Trusted Multi-Category Online Store
               </p>
             </div>
           </div>
@@ -225,3 +220,4 @@ export default function Footer() {
     </footer>
   );
 }
+

@@ -1,4 +1,230 @@
-import 'dotenv/config';
+const fs = require('fs');
+const path = require('path');
+const { slugify, cleanString, buildCategoryTaxonomy } = require('./category-taxonomy');
+
+const dropshippingCatalogPath = path.join(__dirname, '..', 'Marchents', 'dropshipping.com.bd', 'products_catalog.json');
+const resellerhubCatalogPath = path.join(__dirname, '..', 'data', 'resellerhub-catalog.json');
+const outputSeedPath = path.join(__dirname, '..', 'apps', 'api', 'src', 'seed.ts');
+const catalogSummaryPath = path.join(__dirname, '..', 'data', 'full_published_catalog_summary.json');
+
+console.log('Reading catalogs from disk...');
+const dropshippingProducts = JSON.parse(fs.readFileSync(dropshippingCatalogPath, 'utf8'));
+const resellerhubProducts = fs.existsSync(resellerhubCatalogPath) 
+  ? JSON.parse(fs.readFileSync(resellerhubCatalogPath, 'utf8')) 
+  : [];
+
+console.log(`Loaded ${dropshippingProducts.length} products from Dropshipping BD.`);
+console.log(`Loaded ${resellerhubProducts.length} products from ResellerHub BD.`);
+
+const { rootCategories, resolveCategory } = buildCategoryTaxonomy(dropshippingProducts, resellerhubProducts);
+
+// Brand Detection mapping
+const brandLookup = [
+  { name: 'boAt', match: /\bboat\b/i, slug: 'boat' },
+  { name: 'Apple', match: /\b(apple|iphone|airpods)\b/i, slug: 'apple' },
+  { name: 'Baseus', match: /\bbaseus\b/i, slug: 'baseus' },
+  { name: 'Awei', match: /\bawei\b/i, slug: 'awei' },
+  { name: 'JBL', match: /\bjbl\b/i, slug: 'jbl' },
+  { name: 'Havit', match: /\bhavit\b/i, slug: 'havit' },
+  { name: 'Remax', match: /\bremax\b/i, slug: 'remax' },
+  { name: 'MEIJUJI', match: /\bmeijuji\b/i, slug: 'meijuji' },
+  { name: 'OLEVS', match: /\bolevs\b/i, slug: 'olevs' },
+  { name: 'CASIO', match: /\bcasio\b/i, slug: 'casio' },
+  { name: 'PLOKAMA', match: /\bplokama\b/i, slug: 'plokama' },
+  { name: 'V380', match: /\bv380\b/i, slug: 'v380' },
+  { name: 'MEMO', match: /\bmemo\b/i, slug: 'memo' },
+  { name: 'Kemei', match: /\bkemei\b/i, slug: 'kemei' },
+  { name: 'Snille', match: /\bsnille\b/i, slug: 'snille' },
+  { name: 'VGR', match: /\bvgr\b/i, slug: 'vgr' },
+  { name: 'Best Win', match: /\bbest\s*win\b/i, slug: 'best-win' },
+  { name: 'Kenakata Choice', match: /.*/, slug: 'kenakata-choice' }
+];
+
+function detectBrand(title, text = '') {
+  const combined = `${title} ${text}`;
+  for (const b of brandLookup) {
+    if (b.match.test(combined)) {
+      return { name: b.name, slug: b.slug };
+    }
+  }
+  return { name: 'Kenakata Choice', slug: 'kenakata-choice' };
+}
+
+// Extract brands
+const brandsMap = new Map();
+brandsMap.set('kenakata-choice', { slug: 'kenakata-choice', en: 'Kenakata Choice', bn: 'কেনাকাটা চয়েস' });
+
+const normalizedProducts = [];
+const usedSlugs = new Set();
+const usedSkus = new Set();
+
+// 1. Process Dropshipping BD Products
+for (const p of dropshippingProducts) {
+  const catResolution = resolveCategory(p.categories);
+  const brand = detectBrand(p.name, p.detailsHtml);
+
+  if (!brandsMap.has(brand.slug)) {
+    brandsMap.set(brand.slug, { slug: brand.slug, en: brand.name, bn: brand.name });
+  }
+
+  let baseSlug = slugify(p.slug || p.name);
+  let finalSlug = baseSlug;
+  let counter = 1;
+  while (usedSlugs.has(finalSlug)) {
+    finalSlug = `${baseSlug}-${p.id}-${counter}`;
+    counter++;
+  }
+  usedSlugs.add(finalSlug);
+
+  const merchantSku = cleanString(p.sku || `DSP-${p.id}`);
+  let customerSku = `KNK-DSP-${merchantSku}`;
+  let skuCounter = 1;
+  while (usedSkus.has(customerSku)) {
+    customerSku = `KNK-DSP-${merchantSku}-${skuCounter}`;
+    skuCounter++;
+  }
+  usedSkus.add(customerSku);
+
+  const wholesalePrice = p.wholesalePrice || 500;
+  const retailPrice = p.retailPrice || Math.round(wholesalePrice * 1.3);
+  const compareAtPrice = Math.round(retailPrice * 1.25);
+
+  const webImages = (p.localImageFiles || []).map(img => `/uploads/products/dropshipping-bd/${p.id}/${img}`);
+  if (webImages.length === 0 && p.thumbnailUrl) {
+    webImages.push(p.thumbnailUrl);
+  }
+
+  const rawDesc = cleanString(p.descriptionText || p.detailsHtml || p.name);
+  const highlights = rawDesc
+    .split('\n')
+    .filter(l => l.length > 5 && l.length < 120 && !l.includes('TK') && !l.includes('Price') && !l.includes('SKU'))
+    .slice(0, 5);
+
+  normalizedProducts.push({
+    merchantType: 'DROPSHIPPING_BD',
+    shopSlug: 'dropshippingbd',
+    partnerId: p.id,
+    merchantSku: merchantSku,
+    customerSku: customerSku,
+    title: cleanString(p.name),
+    titleBn: cleanString(p.name),
+    slug: finalSlug,
+    rootCategorySlug: catResolution.rootSlug,
+    subCategorySlug: catResolution.subSlug,
+    brandSlug: brand.slug,
+    wholesalePrice: wholesalePrice,
+    retailPrice: retailPrice,
+    compareAtPrice: compareAtPrice,
+    images: webImages,
+    description: cleanString(p.detailsHtml || p.descriptionText),
+    descriptionBn: cleanString(p.detailsHtml || p.descriptionText),
+    highlights: highlights.length > 0 ? highlights : [cleanString(p.name)],
+    highlightsBn: highlights.length > 0 ? highlights : [cleanString(p.name)],
+    specifications: {
+      "Wholesale Supplier": "Dropshipping BD Official",
+      "Supplier SKU": merchantSku,
+      "Customer SKU": customerSku,
+      "Category": p.categories.join(' > ')
+    },
+    stockQty: 100
+  });
+}
+
+// 2. Process ResellerHub BD Products
+for (const p of resellerhubProducts) {
+  let baseSlug = slugify(p.slug || p.title);
+  let finalSlug = baseSlug;
+  let counter = 1;
+  while (usedSlugs.has(finalSlug)) {
+    finalSlug = `${baseSlug}-${counter}`;
+    counter++;
+  }
+  usedSlugs.add(finalSlug);
+
+  const merchantSku = cleanString(p.sku || `RHB-${p.id}`);
+  let customerSku = `KNK-RHB-${merchantSku}`;
+  let skuCounter = 1;
+  while (usedSkus.has(customerSku)) {
+    customerSku = `KNK-RHB-${merchantSku}-${skuCounter}`;
+    skuCounter++;
+  }
+  usedSkus.add(customerSku);
+
+  if (p.brandSlug && !brandsMap.has(p.brandSlug)) {
+    brandsMap.set(p.brandSlug, { slug: p.brandSlug, en: p.brand || p.brandSlug, bn: p.brand || p.brandSlug });
+  }
+
+  normalizedProducts.push({
+    merchantType: 'RESELLERHUB_BD',
+    shopSlug: 'resellerhubbd',
+    partnerId: p.id || p.folderId,
+    merchantSku: merchantSku,
+    customerSku: customerSku,
+    title: cleanString(p.title),
+    titleBn: cleanString(p.titleBn || p.title),
+    slug: finalSlug,
+    rootCategorySlug: p.mainCategorySlug || 'gadgets',
+    subCategorySlug: p.categorySlug || 'electronics',
+    brandSlug: p.brandSlug || 'kenakata-choice',
+    wholesalePrice: Math.round(p.price * 0.75),
+    retailPrice: p.price,
+    compareAtPrice: p.compareAt || Math.round(p.price * 1.3),
+    images: p.images || [],
+    description: cleanString(p.description),
+    descriptionBn: cleanString(p.descriptionBn || p.description),
+    highlights: p.highlights || [p.title],
+    highlightsBn: p.highlightsBn || [p.titleBn || p.title],
+    specifications: {
+      "Wholesale Supplier": "ResellerHub BD",
+      "Supplier SKU": merchantSku,
+      "Customer SKU": customerSku
+    },
+    stockQty: 50
+  });
+}
+
+console.log(`\n======================================================`);
+console.log(`TOTAL NORMALIZED PRODUCTS READY TO PUBLISH: ${normalizedProducts.length}`);
+console.log(`TOTAL BRANDS: ${brandsMap.size}`);
+console.log(`======================================================\n`);
+
+// Build final categories JSON structure for prisma
+const categoriesArray = Array.from(rootCategories.values()).map(r => ({
+  slug: r.slug,
+  en: r.en,
+  bn: r.bn,
+  order: r.order,
+  children: Object.values(r.sub).map(s => ({
+    slug: s.slug,
+    en: s.en,
+    bn: s.bn
+  }))
+}));
+
+const brandsArray = Array.from(brandsMap.values());
+
+// Save summary json
+fs.writeFileSync(catalogSummaryPath, JSON.stringify({
+  totalProducts: normalizedProducts.length,
+  categoriesCount: categoriesArray.reduce((acc, c) => acc + 1 + (c.children?.length || 0), 0),
+  brandsCount: brandsArray.length,
+  dropshippingCount: dropshippingProducts.length,
+  resellerhubCount: resellerhubProducts.length,
+  generatedAt: new Date().toISOString()
+}, null, 2), 'utf8');
+
+// Generate seed file content
+// To prevent huge string concatenation issues in TypeScript, we embed the data cleanly
+const seedDataPath = path.join(__dirname, '..', 'data', 'seed_full_catalog_data.json');
+fs.writeFileSync(seedDataPath, JSON.stringify({
+  categories: categoriesArray,
+  brands: brandsArray,
+  products: normalizedProducts
+}, null, 2), 'utf8');
+
+console.log(`Saved master seed dataset to ${seedDataPath}`);
+
+const tsCode = `import 'dotenv/config';
 import { PrismaClient } from '@prisma/client';
 import * as bcrypt from 'bcryptjs';
 import * as fs from 'fs';
@@ -13,12 +239,12 @@ async function main() {
   const seedData = JSON.parse(fs.readFileSync(seedDataPath, 'utf8'));
   
   const { categories, brands, products } = seedData;
-  console.log(`Loaded ${products.length} products, ${categories.length} root categories, ${brands.length} brands.`);
+  console.log(\`Loaded \${products.length} products, \${categories.length} root categories, \${brands.length} brands.\`);
 
   // 1. Clean previous catalog tables safely
   console.log('1. Cleaning previous catalog tables...');
   try {
-    await prisma.$executeRawUnsafe(`
+    await prisma.$executeRawUnsafe(\`
       TRUNCATE TABLE 
         inventory_reservations,
         inventory_ledger,
@@ -32,7 +258,7 @@ async function main() {
         category_translations,
         categories
       CASCADE;
-    `);
+    \`);
   } catch (e) {
     console.log('Cleanup note:', e.message);
   }
@@ -203,7 +429,7 @@ async function main() {
   }
 
   // 7. Products Ingestion (Batch inserts)
-  console.log(`7. Ingesting ${products.length} Products with Dual-SKU Architecture...`);
+  console.log(\`7. Ingesting \${products.length} Products with Dual-SKU Architecture...\`);
   
   let inserted = 0;
   const batchSize = 50;
@@ -253,8 +479,8 @@ async function main() {
               create: (p.images || []).map((url: string, idx: number) => ({
                 objectKey: url,
                 mediaType: 'image/jpeg',
-                altEn: `${p.title} - Image ${idx + 1}`,
-                altBn: `${p.titleBn || p.title} - ছবি ${idx + 1}`,
+                altEn: \`\${p.title} - Image \${idx + 1}\`,
+                altBn: \`\${p.titleBn || p.title} - ছবি \${idx + 1}\`,
                 sortOrder: idx,
               })),
             },
@@ -296,10 +522,10 @@ async function main() {
         });
         inserted++;
       } catch (err) {
-        console.error(`Failed to insert product ${p.slug}: ${err.message}`);
+        console.error(\`Failed to insert product \${p.slug}: \${err.message}\`);
       }
     }
-    console.log(`Inserted ${inserted}/${products.length} products...`);
+    console.log(\`Inserted \${inserted}/\${products.length} products...\`);
   }
 
   // 8. Promotional Coupons
@@ -348,10 +574,9 @@ async function main() {
     });
   }
 
-  console.log(`
-======================================================`);
-  console.log(`✅ FULL PRODUCTION SEED COMPLETE: ${inserted} PRODUCTS SEEDED!`);
-  console.log(`======================================================\n`);
+  console.log(\`\n======================================================\`);
+  console.log(\`✅ FULL PRODUCTION SEED COMPLETE: \${inserted} PRODUCTS SEEDED!\`);
+  console.log(\`======================================================\\n\`);
 }
 
 main()
@@ -362,3 +587,7 @@ main()
   .finally(async () => {
     await prisma.$disconnect();
   });
+`;
+
+fs.writeFileSync(outputSeedPath, tsCode, 'utf8');
+console.log(`Generated TypeScript seeder at ${outputSeedPath}`);
